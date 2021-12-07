@@ -1,0 +1,3 @@
+# AdventOfCode2021
+
+ONLY LOOK IF YOU'RE ACTUALLY STUCK....
