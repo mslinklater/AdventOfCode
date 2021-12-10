@@ -14,8 +14,10 @@ class Cell:
         self.value = -1
         self.kind = UNKNOWN
         self.basin = None
+        self.processed = False
 
 def solve(filename, part):
+    map = []
     f = open(filename, "rt")
     readLines = f.readlines()
 
@@ -23,7 +25,6 @@ def solve(filename, part):
     for line in readLines:
         inputLines.append(line.strip("\n"))
 
-    map = []
     ySize = len(inputLines)
     xSize = len(inputLines[0])
     for x in range(0, xSize):
@@ -65,9 +66,34 @@ def solve(filename, part):
         return total
 
     # Now work out basins
-    unknownQueue = []
-    for 
+    queue = []
+    totals = []
+    for lowPoint in lowPoints:
+        queue.append(lowPoint)
+        score = 0
+        while len(queue) > 0:
+            x = queue[0][0]
+            y = queue[0][1]
+            if map[x][y].processed == False and map[x][y].value < 9:
+                score += 1
+                map[x][y].processed = True
+                if x > 0 and map[x-1][y].value > map[x][y].value:
+                    queue.append([x-1, y])
+                if x < xSize-1 and map[x+1][y].value > map[x][y].value:
+                    queue.append([x+1, y])
+                if y > 0 and map[x][y-1].value > map[x][y].value:
+                    queue.append([x, y-1])
+                if y < ySize-1 and map[x][y+1].value > map[x][y].value:
+                    queue.append([x, y+1])
+            queue.pop(0)
+        totals.append(score)
+
+    sortedTotals = sorted(totals)
+
+    length = len(sortedTotals)
+    return sortedTotals[length-1] * sortedTotals[length-2] * sortedTotals[length-3]
 
 
 print("Test 1:" + str(solve("9/test.txt", 1)))
 print("Part 1:" + str(solve("9/input.txt", 1)))
+print("Part 2:" + str(solve("9/input.txt", 2 )))
