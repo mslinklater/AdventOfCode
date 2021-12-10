@@ -1,18 +1,9 @@
 # Advent of code 2021 - day 9
 # https://adventofcode.com/2021/day/9
 
-UNKNOWN = 1
-UP = 2
-DOWN = 3
-LEFT = 4
-RIGHT = 5
-BOTTOM = 6
-TOP = 7
-
 class Cell:
     def __init__(self):
         self.value = -1
-        self.kind = UNKNOWN
         self.basin = None
         self.processed = False
 
@@ -60,7 +51,6 @@ def solve(filename, part):
             if lowest:
                 total += thisHeight + 1
                 lowPoints.append([x,y])
-                map[x][y].kind = BOTTOM
 
     if part == 1:
         return total
