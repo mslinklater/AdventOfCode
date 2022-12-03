@@ -59,3 +59,7 @@ margin_right = 200.0
 margin_bottom = 134.0
 
 [connection signal="pressed" from="MainMenuButton" to="." method="_on_MainMenuButton_pressed"]
+[connection signal="pressed" from="Test1Button" to="." method="_on_Test1Button_pressed"]
+[connection signal="pressed" from="Test2Button" to="." method="_on_Test2Button_pressed"]
+[connection signal="pressed" from="Puzzle1Button" to="." method="_on_Puzzle1Button_pressed"]
+[connection signal="pressed" from="Puzzle2Button" to="." method="_on_Puzzle2Button_pressed"]

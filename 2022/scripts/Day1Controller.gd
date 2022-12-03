@@ -11,26 +11,27 @@ onready var test2ResultLabel: Label = get_node("Test2Result")
 var test1Answer = 24000
 var test2Answer = 45000
 
+var testLines = []
 var testTotals = []
+var lines = []
 var totals = []
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
-	parse_file('res://input/day1test.txt', testTotals)
-	parse_file('res://input/day1.txt', totals)
+	Utils.load_file_extract_lines('res://input/day1test.txt', testLines)
+	Utils.load_file_extract_lines('res://input/day1.txt', lines)
+	parse_lines(testLines, testTotals)
+	parse_lines(lines, totals)
 
-func parse_file(filename, dest: Array):
-	var f = File.new()
-	f.open(filename, File.READ)
+func parse_lines(input: Array, output: Array):
+	output.clear()
 	var thisTotal = 0
-	while not f.eof_reached(): # iterate through all lines until the end of file is reached
-		var line = f.get_line()
+	for line in input:
 		if line.length() > 0:
 			thisTotal += int(line)
 		else:
-			dest.append(thisTotal)
+			output.append(thisTotal)
 			thisTotal = 0
-	f.close()
 
 func doPart1(data: Array) -> int:
 	var largest: int = 0
