@@ -58,6 +58,12 @@ margin_top = 90.0
 margin_right = 200.0
 margin_bottom = 110.0
 
+[node name="ProgressBar" type="ProgressBar" parent="."]
+margin_left = 100.0
+margin_right = 200.0
+margin_bottom = 20.0
+rect_min_size = Vector2( 100, 0 )
+
 [connection signal="pressed" from="MainMenuButton" to="." method="_on_Mainmenu_Button_pressed"]
 [connection signal="pressed" from="Puzzle1Button" to="." method="_on_Puzzle1Button_pressed"]
 [connection signal="pressed" from="Puzzle2Button" to="." method="_on_Puzzle2Button_pressed"]
