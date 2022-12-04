@@ -22,6 +22,13 @@ margin_right = 248.0
 margin_bottom = 20.0
 text = "Day 3"
 
+[node name="Day4Button" type="Button" parent="."]
+margin_left = 300.0
+margin_right = 348.0
+margin_bottom = 20.0
+text = "Day 4"
+
 [connection signal="pressed" from="Day1Button" to="." method="_on_Day1_Button_pressed"]
 [connection signal="pressed" from="Day2Button" to="." method="_on_Day2Button_pressed"]
 [connection signal="pressed" from="Day3Button" to="." method="_on_Day3Button_pressed"]
+[connection signal="pressed" from="Day4Button" to="." method="_on_Day4Button_pressed"]
