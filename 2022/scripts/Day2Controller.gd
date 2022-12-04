@@ -1,7 +1,7 @@
 extends Node2D
 
 # answer 1 = 12679
-# answer 2 = 
+# answer 2 = 14470
 
 onready var test1Answer = 15
 onready var test2Answer = 12
