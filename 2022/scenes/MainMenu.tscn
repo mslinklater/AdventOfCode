@@ -11,6 +11,12 @@ margin_right = 48.0
 margin_bottom = 70.0
 text = "Day 1"
 
+[node name="Day6Button" type="Button" parent="."]
+margin_top = 80.0
+margin_right = 48.0
+margin_bottom = 100.0
+text = "Day 6"
+
 [node name="Day2Button" type="Button" parent="."]
 margin_left = 100.0
 margin_top = 50.0
@@ -45,6 +51,7 @@ margin_bottom = 20.0
 text = "3D Mode"
 
 [connection signal="pressed" from="Day1Button" to="." method="_on_Day1_Button_pressed"]
+[connection signal="pressed" from="Day6Button" to="." method="_on_Day6Button_pressed"]
 [connection signal="pressed" from="Day2Button" to="." method="_on_Day2Button_pressed"]
 [connection signal="pressed" from="Day3Button" to="." method="_on_Day3Button_pressed"]
 [connection signal="pressed" from="Day4Button" to="." method="_on_Day4Button_pressed"]

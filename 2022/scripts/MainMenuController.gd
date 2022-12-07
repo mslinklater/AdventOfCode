@@ -20,3 +20,6 @@ func _on_3DModeButton_pressed():
 
 func _on_Day5Button_pressed():
 	get_tree().change_scene("res://scenes/Day5.tscn")
+
+func _on_Day6Button_pressed():
+	get_tree().change_scene("res://scenes/Day6.tscn")
