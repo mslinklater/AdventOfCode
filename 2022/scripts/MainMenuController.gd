@@ -23,3 +23,6 @@ func _on_Day5Button_pressed():
 
 func _on_Day6Button_pressed():
 	get_tree().change_scene("res://scenes/Day6.tscn")
+
+func _on_Day7Button_pressed():
+	get_tree().change_scene("res://scenes/Day7.tscn")
