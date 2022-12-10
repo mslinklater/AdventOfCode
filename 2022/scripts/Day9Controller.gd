@@ -1,7 +1,7 @@
 extends Node2D
 
 # Answer 1 - 6406
-# Answer 2 - 
+# Answer 2 - 2643
 
 onready var puzzle1Label: Label = get_node("Puzzle1Label")
 onready var puzzle2Label: Label = get_node("Puzzle2Label")
