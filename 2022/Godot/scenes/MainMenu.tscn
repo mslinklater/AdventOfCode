@@ -22,7 +22,6 @@ grow_horizontal = 2
 grow_vertical = 2
 
 [node name="TitleLabel" type="Label" parent="CanvasLayer/Control"]
-layout_mode = 1
 anchors_preset = 10
 anchor_right = 1.0
 offset_bottom = 26.0
@@ -33,7 +32,6 @@ horizontal_alignment = 1
 
 [node name="HSplitContainer" type="HSplitContainer" parent="CanvasLayer/Control"]
 custom_minimum_size = Vector2(300, 0)
-layout_mode = 1
 anchors_preset = -1
 anchor_right = 1.0
 anchor_bottom = 1.0
@@ -44,70 +42,95 @@ split_offset = 264
 
 [node name="ScrollContainer" type="ScrollContainer" parent="CanvasLayer/Control/HSplitContainer"]
 custom_minimum_size = Vector2(50, 0)
-layout_mode = 2
+offset_right = 264.0
+offset_bottom = 618.0
 
 [node name="VBoxContainer" type="VBoxContainer" parent="CanvasLayer/Control/HSplitContainer/ScrollContainer"]
-layout_mode = 2
+offset_right = 257.0
+offset_bottom = 381.0
 
 [node name="Day1Button" type="Button" parent="CanvasLayer/Control/HSplitContainer/ScrollContainer/VBoxContainer"]
-layout_mode = 2
+offset_right = 257.0
+offset_bottom = 31.0
 text = "Day 1 - Calorie Counting
 "
 alignment = 0
 
 [node name="Day2Button" type="Button" parent="CanvasLayer/Control/HSplitContainer/ScrollContainer/VBoxContainer"]
-layout_mode = 2
+offset_top = 35.0
+offset_right = 257.0
+offset_bottom = 66.0
 text = "Day 2 - Rock Paper Scissors"
 alignment = 0
 
 [node name="Day3Button" type="Button" parent="CanvasLayer/Control/HSplitContainer/ScrollContainer/VBoxContainer"]
-layout_mode = 2
+offset_top = 70.0
+offset_right = 257.0
+offset_bottom = 101.0
 text = "Day 3 - Rucksack Reorganization"
 alignment = 0
 
 [node name="Day4Button" type="Button" parent="CanvasLayer/Control/HSplitContainer/ScrollContainer/VBoxContainer"]
-layout_mode = 2
+offset_top = 105.0
+offset_right = 257.0
+offset_bottom = 136.0
 text = "Day 4 - Camp Cleanup"
 alignment = 0
 
 [node name="Day5Button" type="Button" parent="CanvasLayer/Control/HSplitContainer/ScrollContainer/VBoxContainer"]
-layout_mode = 2
+offset_top = 140.0
+offset_right = 257.0
+offset_bottom = 171.0
 theme_override_colors/font_color = Color(1, 0, 0, 1)
 text = "Day 5 - Supply Stacks"
 alignment = 0
 
 [node name="Day6Button" type="Button" parent="CanvasLayer/Control/HSplitContainer/ScrollContainer/VBoxContainer"]
-layout_mode = 2
+offset_top = 175.0
+offset_right = 257.0
+offset_bottom = 206.0
 text = "Day 6 - Tuning Trouble"
 alignment = 0
 
 [node name="Day7Button" type="Button" parent="CanvasLayer/Control/HSplitContainer/ScrollContainer/VBoxContainer"]
-layout_mode = 2
+offset_top = 210.0
+offset_right = 257.0
+offset_bottom = 241.0
 text = "Day 7 - No Space Left On Device"
 alignment = 0
 
 [node name="Day8Button" type="Button" parent="CanvasLayer/Control/HSplitContainer/ScrollContainer/VBoxContainer"]
-layout_mode = 2
+offset_top = 245.0
+offset_right = 257.0
+offset_bottom = 276.0
 text = "Day 8 - Treetop Tree House"
 alignment = 0
 
 [node name="Day9Button" type="Button" parent="CanvasLayer/Control/HSplitContainer/ScrollContainer/VBoxContainer"]
-layout_mode = 2
+offset_top = 280.0
+offset_right = 257.0
+offset_bottom = 311.0
 text = "Day 9 - Rope Bridge"
 alignment = 0
 
 [node name="Day10Button" type="Button" parent="CanvasLayer/Control/HSplitContainer/ScrollContainer/VBoxContainer"]
-layout_mode = 2
+offset_top = 315.0
+offset_right = 257.0
+offset_bottom = 346.0
 text = "Day 10 - Cathode-Ray Tube"
 alignment = 0
 
 [node name="Day11Button" type="Button" parent="CanvasLayer/Control/HSplitContainer/ScrollContainer/VBoxContainer"]
-layout_mode = 2
+offset_top = 350.0
+offset_right = 257.0
+offset_bottom = 381.0
 text = "Day 11 - Monkey in the Middle"
 alignment = 0
 
 [node name="AnswerContainer" type="PanelContainer" parent="CanvasLayer/Control/HSplitContainer"]
-layout_mode = 2
+offset_left = 276.0
+offset_right = 1152.0
+offset_bottom = 618.0
 
 [connection signal="pressed" from="3DModeButton" to="." method="_on_3DModeButton_pressed"]
 [connection signal="pressed" from="CanvasLayer/Control/HSplitContainer/ScrollContainer/VBoxContainer/Day1Button" to="." method="_on_Day1_Button_pressed"]

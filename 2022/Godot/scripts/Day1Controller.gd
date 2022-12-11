@@ -8,8 +8,6 @@ extends Node2D
 @onready var test1ResultLabel: Label = get_node("Test1Result")
 @onready var test2ResultLabel: Label = get_node("Test2Result")
 
-@onready var progressBar: ProgressBar = get_node("ProgressBar")
-
 var test1Answer = 24000
 var test2Answer = 45000
 
@@ -22,13 +20,18 @@ var processing = false
 var processingProgress = 0
 var currentlyExecuting = 0
 
+var test1Passed = false
+var test2Passed = false
+
 # Called when the node enters the scene tree for the first time.
-func _ready():
+func _enter_tree():
 	Utils.load_file_extract_lines('res://../puzzle_input/day1test.txt', testLines)
-	Utils.load_file_extract_lines('res://../puzzle_input/day1.txt', lines)
 	parse_lines(testLines, testTotals)
+	Utils.load_file_extract_lines('res://../puzzle_input/day1.txt', lines)
 	parse_lines(lines, totals)
-#	progressBar.percent_visible = 0
+
+func _exit_tree():
+	pass
 
 func _update():
 	if currentlyExecuting != 0:
@@ -66,9 +69,6 @@ func doPart2(data: Array) -> int:
 	return topThreeTotal
 
 # Button handlers
-
-func _on_Mainmenu_Button_pressed():
-	get_tree().change_scene_to_file("res://scenes/MainMenu.tscn")
 
 func _on_Puzzle1Button_pressed():
 	puzzle1AnswerLabel.text = str(doPart1(totals))
