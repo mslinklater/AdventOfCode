@@ -5,94 +5,119 @@
 [node name="MainMenuRoot" type="Node2D"]
 script = ExtResource("1")
 
-[node name="Day1Button" type="Button" parent="."]
-offset_top = 50.0
-offset_right = 48.0
-offset_bottom = 70.0
-text = "Day 1"
-
-[node name="Day2Button" type="Button" parent="."]
-offset_left = 100.0
-offset_top = 50.0
-offset_right = 148.0
-offset_bottom = 70.0
-text = "Day 2"
-
-[node name="Day3Button" type="Button" parent="."]
-offset_left = 200.0
-offset_top = 50.0
-offset_right = 248.0
-offset_bottom = 70.0
-text = "Day 3"
-
-[node name="Day4Button" type="Button" parent="."]
-offset_left = 300.0
-offset_top = 50.0
-offset_right = 348.0
-offset_bottom = 70.0
-text = "Day 4"
-
-[node name="Day5Button" type="Button" parent="."]
-offset_left = 400.0
-offset_top = 50.0
-offset_right = 448.0
-offset_bottom = 70.0
-text = "Day 5 X"
-
-[node name="Day6Button" type="Button" parent="."]
-offset_top = 90.0
-offset_right = 51.0
-offset_bottom = 121.0
-text = "Day 6"
-
-[node name="Day7Button" type="Button" parent="."]
-offset_left = 100.0
-offset_top = 90.0
-offset_right = 151.0
-offset_bottom = 121.0
-text = "Day 7"
-
-[node name="Day8Button" type="Button" parent="."]
-offset_left = 200.0
-offset_top = 90.0
-offset_right = 251.0
-offset_bottom = 121.0
-text = "Day 8"
-
-[node name="Day9Button" type="Button" parent="."]
-offset_left = 300.0
-offset_top = 90.0
-offset_right = 351.0
-offset_bottom = 121.0
-text = "Day 9"
-
-[node name="Day10Button" type="Button" parent="."]
-offset_left = 400.0
-offset_top = 90.0
-offset_right = 461.0
-offset_bottom = 121.0
-text = "Day 10"
-
-[node name="Day11Button" type="Button" parent="."]
-offset_top = 130.0
-offset_right = 61.0
-offset_bottom = 161.0
-text = "Day 11"
-
 [node name="3DModeButton" type="Button" parent="."]
+visible = false
 offset_right = 12.0
 offset_bottom = 20.0
 text = "3D Mode"
 
-[connection signal="pressed" from="Day1Button" to="." method="_on_Day1_Button_pressed"]
-[connection signal="pressed" from="Day2Button" to="." method="_on_Day2Button_pressed"]
-[connection signal="pressed" from="Day3Button" to="." method="_on_Day3Button_pressed"]
-[connection signal="pressed" from="Day4Button" to="." method="_on_Day4Button_pressed"]
-[connection signal="pressed" from="Day5Button" to="." method="_on_Day5Button_pressed"]
-[connection signal="pressed" from="Day6Button" to="." method="_on_Day6Button_pressed"]
-[connection signal="pressed" from="Day7Button" to="." method="_on_Day7Button_pressed"]
-[connection signal="pressed" from="Day8Button" to="." method="_on_Day8Button_pressed"]
-[connection signal="pressed" from="Day9Button" to="." method="_on_Day9Button_pressed"]
-[connection signal="pressed" from="Day10Button" to="." method="_on_Day10Button_pressed"]
-[connection signal="pressed" from="Day11Button" to="." method="_on_day_11_button_pressed"]
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="Control" type="Control" parent="CanvasLayer"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="TitleLabel" type="Label" parent="CanvasLayer/Control"]
+layout_mode = 1
+anchors_preset = 10
+anchor_right = 1.0
+offset_bottom = 26.0
+grow_horizontal = 2
+text = "Advent of Code 2022
+"
+horizontal_alignment = 1
+
+[node name="HSplitContainer" type="HSplitContainer" parent="CanvasLayer/Control"]
+custom_minimum_size = Vector2(300, 0)
+layout_mode = 1
+anchors_preset = -1
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = 30.0
+grow_horizontal = 2
+grow_vertical = 2
+split_offset = 264
+
+[node name="ScrollContainer" type="ScrollContainer" parent="CanvasLayer/Control/HSplitContainer"]
+custom_minimum_size = Vector2(50, 0)
+layout_mode = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="CanvasLayer/Control/HSplitContainer/ScrollContainer"]
+layout_mode = 2
+
+[node name="Day1Button" type="Button" parent="CanvasLayer/Control/HSplitContainer/ScrollContainer/VBoxContainer"]
+layout_mode = 2
+text = "Day 1 - Calorie Counting
+"
+alignment = 0
+
+[node name="Day2Button" type="Button" parent="CanvasLayer/Control/HSplitContainer/ScrollContainer/VBoxContainer"]
+layout_mode = 2
+text = "Day 2 - Rock Paper Scissors"
+alignment = 0
+
+[node name="Day3Button" type="Button" parent="CanvasLayer/Control/HSplitContainer/ScrollContainer/VBoxContainer"]
+layout_mode = 2
+text = "Day 3 - Rucksack Reorganization"
+alignment = 0
+
+[node name="Day4Button" type="Button" parent="CanvasLayer/Control/HSplitContainer/ScrollContainer/VBoxContainer"]
+layout_mode = 2
+text = "Day 4 - Camp Cleanup"
+alignment = 0
+
+[node name="Day5Button" type="Button" parent="CanvasLayer/Control/HSplitContainer/ScrollContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_colors/font_color = Color(1, 0, 0, 1)
+text = "Day 5 - Supply Stacks"
+alignment = 0
+
+[node name="Day6Button" type="Button" parent="CanvasLayer/Control/HSplitContainer/ScrollContainer/VBoxContainer"]
+layout_mode = 2
+text = "Day 6 - Tuning Trouble"
+alignment = 0
+
+[node name="Day7Button" type="Button" parent="CanvasLayer/Control/HSplitContainer/ScrollContainer/VBoxContainer"]
+layout_mode = 2
+text = "Day 7 - No Space Left On Device"
+alignment = 0
+
+[node name="Day8Button" type="Button" parent="CanvasLayer/Control/HSplitContainer/ScrollContainer/VBoxContainer"]
+layout_mode = 2
+text = "Day 8 - Treetop Tree House"
+alignment = 0
+
+[node name="Day9Button" type="Button" parent="CanvasLayer/Control/HSplitContainer/ScrollContainer/VBoxContainer"]
+layout_mode = 2
+text = "Day 9 - Rope Bridge"
+alignment = 0
+
+[node name="Day10Button" type="Button" parent="CanvasLayer/Control/HSplitContainer/ScrollContainer/VBoxContainer"]
+layout_mode = 2
+text = "Day 10 - Cathode-Ray Tube"
+alignment = 0
+
+[node name="Day11Button" type="Button" parent="CanvasLayer/Control/HSplitContainer/ScrollContainer/VBoxContainer"]
+layout_mode = 2
+text = "Day 11 - Monkey in the Middle"
+alignment = 0
+
+[node name="AnswerContainer" type="PanelContainer" parent="CanvasLayer/Control/HSplitContainer"]
+layout_mode = 2
+
 [connection signal="pressed" from="3DModeButton" to="." method="_on_3DModeButton_pressed"]
+[connection signal="pressed" from="CanvasLayer/Control/HSplitContainer/ScrollContainer/VBoxContainer/Day1Button" to="." method="_on_Day1_Button_pressed"]
+[connection signal="pressed" from="CanvasLayer/Control/HSplitContainer/ScrollContainer/VBoxContainer/Day2Button" to="." method="_on_Day2Button_pressed"]
+[connection signal="pressed" from="CanvasLayer/Control/HSplitContainer/ScrollContainer/VBoxContainer/Day3Button" to="." method="_on_Day3Button_pressed"]
+[connection signal="pressed" from="CanvasLayer/Control/HSplitContainer/ScrollContainer/VBoxContainer/Day4Button" to="." method="_on_Day4Button_pressed"]
+[connection signal="pressed" from="CanvasLayer/Control/HSplitContainer/ScrollContainer/VBoxContainer/Day5Button" to="." method="_on_Day5Button_pressed"]
+[connection signal="pressed" from="CanvasLayer/Control/HSplitContainer/ScrollContainer/VBoxContainer/Day6Button" to="." method="_on_Day6Button_pressed"]
+[connection signal="pressed" from="CanvasLayer/Control/HSplitContainer/ScrollContainer/VBoxContainer/Day7Button" to="." method="_on_Day7Button_pressed"]
+[connection signal="pressed" from="CanvasLayer/Control/HSplitContainer/ScrollContainer/VBoxContainer/Day8Button" to="." method="_on_Day8Button_pressed"]
+[connection signal="pressed" from="CanvasLayer/Control/HSplitContainer/ScrollContainer/VBoxContainer/Day9Button" to="." method="_on_Day9Button_pressed"]
+[connection signal="pressed" from="CanvasLayer/Control/HSplitContainer/ScrollContainer/VBoxContainer/Day10Button" to="." method="_on_Day10Button_pressed"]
+[connection signal="pressed" from="CanvasLayer/Control/HSplitContainer/ScrollContainer/VBoxContainer/Day11Button" to="." method="_on_day_11_button_pressed"]

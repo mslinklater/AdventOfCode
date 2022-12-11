@@ -28,8 +28,8 @@ var test2Answer = 2713310158
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
-	parse_file('res://input/day11test.txt',testData)
-	parse_file('res://input/day11.txt',realData)
+	parse_file('res://../puzzle_input/day11test.txt',testData)
+	parse_file('res://../puzzle_input/day11.txt',realData)
 
 func parse_file(filename, data: Array):
 	var lines = []

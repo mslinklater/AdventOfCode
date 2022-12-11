@@ -22,8 +22,8 @@ class StartingState:
 @onready var data := StartingState.new()
 
 func _ready():
-	parse_input('res://input/day5test.txt', testData)
-	parse_input('res://input/day5.txt', data)
+	parse_input('res://../puzzle_input/day5test.txt', testData)
+	parse_input('res://../puzzle_input/day5.txt', data)
 
 func parse_input(filename, state: StartingState):
 	var lines = []

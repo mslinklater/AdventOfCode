@@ -24,8 +24,8 @@ var currentlyExecuting = 0
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
-	Utils.load_file_extract_lines('res://input/day1test.txt', testLines)
-	Utils.load_file_extract_lines('res://input/day1.txt', lines)
+	Utils.load_file_extract_lines('res://../puzzle_input/day1test.txt', testLines)
+	Utils.load_file_extract_lines('res://../puzzle_input/day1.txt', lines)
 	parse_lines(testLines, testTotals)
 	parse_lines(lines, totals)
 #	progressBar.percent_visible = 0

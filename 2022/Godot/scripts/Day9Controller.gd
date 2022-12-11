@@ -28,9 +28,9 @@ var test2Data = []
 var realData = []
 
 func _ready():
-	parse_file(testData, 'res://input/day9test.txt')
-	parse_file(test2Data, 'res://input/day9test2.txt')
-	parse_file(realData, 'res://input/day9.txt')
+	parse_file(testData, 'res://../puzzle_input/day9test.txt')
+	parse_file(test2Data, 'res://../puzzle_input/day9test2.txt')
+	parse_file(realData, 'res://../puzzle_input/day9.txt')
 
 func parse_file(data: Array, filename):
 	var lines = []

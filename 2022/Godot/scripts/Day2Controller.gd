@@ -34,8 +34,8 @@ enum Result {LOSE, DRAW, WIN}
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
-	Utils.load_file_extract_lines('res://input/day2test.txt', testLines)
-	Utils.load_file_extract_lines('res://input/day2.txt', lines)
+	Utils.load_file_extract_lines('res://../puzzle_input/day2test.txt', testLines)
+	Utils.load_file_extract_lines('res://../puzzle_input/day2.txt', lines)
 	parse_moves(testLines, testFirstMoves, testSecondMoves, testRequiredResult)
 	parse_moves(lines, firstMoves, secondMoves, requiredResult)
 

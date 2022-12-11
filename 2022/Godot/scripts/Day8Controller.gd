@@ -14,8 +14,8 @@ var realData = []
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
-	parse_file(testData, 'res://input/day8test.txt')
-	parse_file(realData, 'res://input/day8.txt')
+	parse_file(testData, 'res://../puzzle_input/day8test.txt')
+	parse_file(realData, 'res://../puzzle_input/day8.txt')
 
 func parse_file(data: Array, filename):
 	var lines = []

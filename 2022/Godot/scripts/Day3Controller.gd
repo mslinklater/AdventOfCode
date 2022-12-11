@@ -18,8 +18,8 @@ var pouch2 = []
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
-	parse_data('res://input/day3test.txt', testPouch1, testPouch2)
-	parse_data('res://input/day3.txt', pouch1, pouch2)
+	parse_data('res://../puzzle_input/day3test.txt', testPouch1, testPouch2)
+	parse_data('res://../puzzle_input/day3.txt', pouch1, pouch2)
 
 func parse_data(filename, p1: Array, p2: Array):
 	var lines = []

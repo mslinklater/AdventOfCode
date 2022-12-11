@@ -17,8 +17,8 @@ var firstElfRange = []
 var secondElfRange = []
 
 func _ready():
-	parse_input('res://input/day4test.txt', testFirstElfRange, testSecondElfRange)
-	parse_input('res://input/day4.txt', firstElfRange, secondElfRange)
+	parse_input('res://../puzzle_input/day4test.txt', testFirstElfRange, testSecondElfRange)
+	parse_input('res://../puzzle_input/day4.txt', firstElfRange, secondElfRange)
 
 func parse_input(filename, first: Array, second: Array):
 	var lines = []

@@ -24,12 +24,12 @@ var data: String
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
-	test1Data = parse_input('res://input/day6test1.txt')
-	test2Data = parse_input('res://input/day6test2.txt')
-	test3Data = parse_input('res://input/day6test3.txt')
-	test4Data = parse_input('res://input/day6test4.txt')
-	test5Data = parse_input('res://input/day6test5.txt')
-	data = parse_input('res://input/day6.txt')
+	test1Data = parse_input('res://../puzzle_input/day6test1.txt')
+	test2Data = parse_input('res://../puzzle_input/day6test2.txt')
+	test3Data = parse_input('res://../puzzle_input/day6test3.txt')
+	test4Data = parse_input('res://../puzzle_input/day6test4.txt')
+	test5Data = parse_input('res://../puzzle_input/day6test5.txt')
+	data = parse_input('res://../puzzle_input/day6.txt')
 
 func parse_input(filename) -> String:
 	var f = FileAccess.open(filename, FileAccess.READ)

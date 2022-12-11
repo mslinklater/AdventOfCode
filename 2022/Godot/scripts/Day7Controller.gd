@@ -33,9 +33,9 @@ class FSNode:
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
-	parse_file('res://input/day7test.txt', testRoot)
+	parse_file('res://../puzzle_input/day7test.txt', testRoot)
 	testRoot.size = calc_sizes(testRoot)
-	parse_file('res://input/day7.txt', dataRoot)
+	parse_file('res://../puzzle_input/day7.txt', dataRoot)
 	dataRoot.size = calc_sizes(dataRoot)
 
 func parse_file(filename, root: FSNode):
