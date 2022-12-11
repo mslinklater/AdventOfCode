@@ -1,0 +1,39 @@
+[gd_scene load_steps=2 format=3 uid="uid://buep50sehiuu0"]
+
+[ext_resource type="Script" path="res://scripts/Day11Controller.gd" id="1_qlalk"]
+
+[node name="Day11" type="Node2D"]
+script = ExtResource("1_qlalk")
+
+[node name="MainMenuButton" type="Button" parent="."]
+offset_right = 8.0
+offset_bottom = 8.0
+text = "Main Menu"
+
+[node name="Puzzle1Button" type="Button" parent="."]
+offset_top = 40.0
+offset_right = 71.0
+offset_bottom = 71.0
+text = "Puzzle 1"
+
+[node name="Puzzle2Button" type="Button" parent="."]
+offset_top = 80.0
+offset_right = 71.0
+offset_bottom = 111.0
+text = "Puzzle 2"
+
+[node name="Puzzle1Label" type="Label" parent="."]
+offset_left = 100.0
+offset_top = 40.0
+offset_right = 200.0
+offset_bottom = 63.0
+
+[node name="Puzzle2Label" type="Label" parent="."]
+offset_left = 100.0
+offset_top = 80.0
+offset_right = 200.0
+offset_bottom = 103.0
+
+[connection signal="pressed" from="MainMenuButton" to="." method="_on_main_menu_button_pressed"]
+[connection signal="pressed" from="Puzzle1Button" to="." method="_on_puzzle_1_button_pressed"]
+[connection signal="pressed" from="Puzzle2Button" to="." method="_on_puzzle_2_button_pressed"]

@@ -3,8 +3,8 @@ extends Node2D
 # answer 1 = 12679
 # answer 2 = 14470
 
-onready var test1Answer = 15
-onready var test2Answer = 12
+@onready var test1Answer = 15
+@onready var test2Answer = 12
 
 const rockScore = 1
 const paperScore = 2
@@ -14,10 +14,10 @@ const loseScore = 0
 const drawScore = 3
 const winScore = 6
 
-onready var puzzle1AnswerLabel: Label = get_node("Puzzle1ResultLabel")
-onready var puzzle2AnswerLabel: Label = get_node("Puzzle2ResultLabel")
-onready var test1ResultLabel: Label = get_node("Test1ResultLabel")
-onready var test2ResultLabel: Label = get_node("Test2ResultLabel")
+@onready var puzzle1AnswerLabel: Label = get_node("Puzzle1ResultLabel")
+@onready var puzzle2AnswerLabel: Label = get_node("Puzzle2ResultLabel")
+@onready var test1ResultLabel: Label = get_node("Test1ResultLabel")
+@onready var test2ResultLabel: Label = get_node("Test2ResultLabel")
 
 var testLines = []
 var testFirstMoves = []
@@ -146,7 +146,7 @@ func doPart2(first: Array, result:Array) -> int:
 # UI handlers
 
 func _on_MainMenuButton_pressed():
-	get_tree().change_scene("res://scenes/MainMenu.tscn")
+	get_tree().change_scene_to_file("res://scenes/MainMenu.tscn")
 
 
 func _on_Test1Button_pressed():

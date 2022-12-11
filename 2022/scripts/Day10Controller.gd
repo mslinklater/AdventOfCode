@@ -14,8 +14,9 @@ var test2Value = 0
 var testData = []
 var realData = []
 
-onready var puzzle1Label: Label = get_node("Puzzle1Label")
-onready var puzzle2Label: Label = get_node("Puzzle2Label")
+@onready var puzzle1Label: Label = get_node("Puzzle1Label")
+@onready var puzzle2Label: Label = get_node("Puzzle2Label")
+@onready var puzzle2TextEdit: TextEdit = get_node("Puzzle2TextEdit")
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
@@ -48,10 +49,10 @@ func doPuzzle2(data: Array):
 				line = line + "X"
 			else:
 				line = line + "."
-		print(line)			
+		print(line)
 
 func _on_MainMenuButton_pressed():
-	get_tree().change_scene("res://scenes/MainMenu.tscn")
+	get_tree().change_scene_to_file("res://scenes/MainMenu.tscn")
 
 func _on_Puzzle1Button_pressed():
 	if testData[59] * 60 != test60Value:

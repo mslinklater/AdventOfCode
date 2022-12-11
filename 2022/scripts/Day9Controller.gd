@@ -3,8 +3,8 @@ extends Node2D
 # Answer 1 - 6406
 # Answer 2 - 2643
 
-onready var puzzle1Label: Label = get_node("Puzzle1Label")
-onready var puzzle2Label: Label = get_node("Puzzle2Label")
+@onready var puzzle1Label: Label = get_node("Puzzle1Label")
+@onready var puzzle2Label: Label = get_node("Puzzle2Label")
 
 var test1Answer = 13
 var test2Answer = 36
@@ -115,7 +115,7 @@ func doPuzzle2(data: Array) -> int:
 	return map.size()
 
 func _on_MainMenuButton_pressed():
-	get_tree().change_scene("res://scenes/MainMenu.tscn")
+	get_tree().change_scene_to_file("res://scenes/MainMenu.tscn")
 
 func _on_Puzzle1Button_pressed():
 	if doPuzzle1(testData) == test1Answer:

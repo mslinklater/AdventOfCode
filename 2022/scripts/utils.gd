@@ -5,9 +5,8 @@ func _ready():
 	pass # Replace with function body.
 
 func load_file_extract_lines(filename, data: Array):
-	var f = File.new()
-	f.open(filename, File.READ)
+	var f = FileAccess.open(filename, FileAccess.READ)
 	while not f.eof_reached(): # iterate through all lines until the end of file is reached
 		var line = f.get_line()
 		data.append(line)
-	f.close()
+	

@@ -3,12 +3,12 @@ extends Node2D
 # Answer 1 = 69795
 # Answer 1 = 208437
 
-onready var puzzle1AnswerLabel: Label = get_node("Puzzle1AnswerLabel")
-onready var puzzle2AnswerLabel: Label = get_node("Puzzle2AnswerLabel")
-onready var test1ResultLabel: Label = get_node("Test1Result")
-onready var test2ResultLabel: Label = get_node("Test2Result")
+@onready var puzzle1AnswerLabel: Label = get_node("Puzzle1AnswerLabel")
+@onready var puzzle2AnswerLabel: Label = get_node("Puzzle2AnswerLabel")
+@onready var test1ResultLabel: Label = get_node("Test1Result")
+@onready var test2ResultLabel: Label = get_node("Test2Result")
 
-onready var progressBar: ProgressBar = get_node("ProgressBar")
+@onready var progressBar: ProgressBar = get_node("ProgressBar")
 
 var test1Answer = 24000
 var test2Answer = 45000
@@ -28,7 +28,7 @@ func _ready():
 	Utils.load_file_extract_lines('res://input/day1.txt', lines)
 	parse_lines(testLines, testTotals)
 	parse_lines(lines, totals)
-	progressBar.percent_visible = 0
+#	progressBar.percent_visible = 0
 
 func _update():
 	if currentlyExecuting != 0:
@@ -68,7 +68,7 @@ func doPart2(data: Array) -> int:
 # Button handlers
 
 func _on_Mainmenu_Button_pressed():
-	get_tree().change_scene("res://scenes/MainMenu.tscn")
+	get_tree().change_scene_to_file("res://scenes/MainMenu.tscn")
 
 func _on_Puzzle1Button_pressed():
 	puzzle1AnswerLabel.text = str(doPart1(totals))

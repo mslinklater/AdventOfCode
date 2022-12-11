@@ -6,10 +6,10 @@ extends Node2D
 var test1Answer = 2
 var test2Answer = 4
 
-onready var test1Label: Label = get_node("Test1Label")
-onready var test2Label: Label = get_node("Test2Label")
-onready var puzzle1Label: Label = get_node("Puzzle1Label")
-onready var puzzle2Label: Label = get_node("Puzzle2Label")
+@onready var test1Label: Label = get_node("Test1Label")
+@onready var test2Label: Label = get_node("Test2Label")
+@onready var puzzle1Label: Label = get_node("Puzzle1Label")
+@onready var puzzle2Label: Label = get_node("Puzzle2Label")
 
 var testFirstElfRange = []
 var testSecondElfRange = []
@@ -63,7 +63,7 @@ func doPuzzle2(first: Array, second: Array) -> int:
 # UI responders
 
 func _on_MainMenuButton_pressed():
-	get_tree().change_scene("res://scenes/MainMenu.tscn")
+	get_tree().change_scene_to_file("res://scenes/MainMenu.tscn")
 
 func _on_Test1Button_pressed():
 	if doPuzzle1(testFirstElfRange, testSecondElfRange) == test1Answer:

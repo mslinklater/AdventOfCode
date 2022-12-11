@@ -6,10 +6,10 @@ var test2Answer = "MCD"
 # puzzle 1 - VGBBJCRMN
 # puzzle 2 - LBBVJBRMH
 
-onready var test1Label: Label = get_node("Test1Label")
-onready var test2Label: Label = get_node("Test2Label")
-onready var puzzle1Label: Label = get_node("Puzzle1Label")
-onready var puzzle2Label: Label = get_node("Puzzle2Label")
+@onready var test1Label: Label = get_node("Test1Label")
+@onready var test2Label: Label = get_node("Test2Label")
+@onready var puzzle1Label: Label = get_node("Puzzle1Label")
+@onready var puzzle2Label: Label = get_node("Puzzle2Label")
 
 class StartingState:
 	var startstacks: Array
@@ -18,8 +18,8 @@ class StartingState:
 	var move_src: Array
 	var move_dest: Array
 	
-onready var testData := StartingState.new()
-onready var data := StartingState.new()
+@onready var testData := StartingState.new()
+@onready var data := StartingState.new()
 
 func _ready():
 	parse_input('res://input/day5test.txt', testData)
@@ -82,7 +82,7 @@ func doTask(state: StartingState, which) -> String:
 	return result
 
 func _on_MainMenuButton_pressed():
-	get_tree().change_scene("res://scenes/MainMenu.tscn")
+	get_tree().change_scene_to_file("res://scenes/MainMenu.tscn")
 
 func _on_Puzzle1Button_pressed():
 	if doTask(testData, 1) == test1Answer:

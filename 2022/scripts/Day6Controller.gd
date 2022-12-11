@@ -12,8 +12,8 @@ var test3Answer2 = 23
 var test4Answer2 = 29
 var test5Answer2 = 26
 
-onready var puzzle1Label: Label = get_node("Puzzle1Label")
-onready var puzzle2Label: Label = get_node("Puzzle2Label")
+@onready var puzzle1Label: Label = get_node("Puzzle1Label")
+@onready var puzzle2Label: Label = get_node("Puzzle2Label")
 
 var test1Data: String
 var test2Data: String
@@ -32,16 +32,14 @@ func _ready():
 	data = parse_input('res://input/day6.txt')
 
 func parse_input(filename) -> String:
-	var f = File.new()
-	f.open(filename, File.READ)
+	var f = FileAccess.open(filename, FileAccess.READ)
 	var ret = f.get_line()
-	f.close()
 	return ret
 
 # UI Responders
 
 func _on_MainMenuButton_pressed():
-	get_tree().change_scene("res://scenes/MainMenu.tscn")
+	get_tree().change_scene_to_file("res://scenes/MainMenu.tscn")
 
 func doTask(inputData: String, num) -> int:
 	for i in range(0, inputData.length()-4):

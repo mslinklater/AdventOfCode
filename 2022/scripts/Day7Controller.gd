@@ -3,8 +3,8 @@ extends Node2D
 # answer 1 - 2061777
 # answer 2 - 4473403
 
-onready var puzzle1Label: Label = get_node("Puzzle1Label")
-onready var puzzle2Label: Label = get_node("Puzzle2Label")
+@onready var puzzle1Label: Label = get_node("Puzzle1Label")
+@onready var puzzle2Label: Label = get_node("Puzzle2Label")
 
 var test_e_size = 584
 var test_a_size = 94853
@@ -28,8 +28,8 @@ class FSNode:
 	var isDirectory: bool
 	var size: int
 
-onready var testRoot = FSNode.new()
-onready var dataRoot = FSNode.new()
+@onready var testRoot = FSNode.new()
+@onready var dataRoot = FSNode.new()
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
@@ -125,7 +125,7 @@ func doPuzzle2(root: FSNode) -> int:
 	return ret
 	
 func _on_MainMenuButton_pressed():
-	get_tree().change_scene("res://scenes/MainMenu.tscn")
+	get_tree().change_scene_to_file("res://scenes/MainMenu.tscn")
 
 func _on_Puzzle1Button_pressed():
 	if find_dir_size(testRoot, "e") != test_e_size:
