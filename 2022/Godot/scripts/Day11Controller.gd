@@ -1,5 +1,8 @@
 extends Node2D
 
+# TODO: Make re-entrant
+# TODO: Merge solve functions in to one ?
+
 class Monkey:
 	var items: Array
 	var op_mult: int
