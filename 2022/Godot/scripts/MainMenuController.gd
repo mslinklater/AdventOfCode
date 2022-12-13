@@ -2,6 +2,7 @@ extends Node2D
 
 var day1_scene = preload("res://scenes/Day1.tscn").instantiate()
 var day2_scene = preload("res://scenes/Day2.tscn").instantiate()
+var day12_scene = preload("res://scenes/Day12.tscn").instantiate()
 
 @onready var day_load_node = get_node("CanvasLayer/Control/HSplitContainer/AnswerContainer")
 
@@ -13,6 +14,7 @@ func load_day(day_scene):
 		for child in day_load_node.get_children():
 			day_load_node.remove_child(child)
 	day_load_node.add_child(day_scene)
+	# TODO: Find and setup the child canvas layer maybe
 
 func _on_Day1_Button_pressed():
 	load_day(day1_scene)
@@ -52,3 +54,6 @@ func _on_Day10Button_pressed():
 
 func _on_day_11_button_pressed():
 	get_tree().change_scene_to_file("res://scenes/Day11.tscn")
+
+func _on_day_12_button_pressed():
+	load_day(day12_scene)

@@ -47,7 +47,7 @@ offset_bottom = 618.0
 
 [node name="VBoxContainer" type="VBoxContainer" parent="CanvasLayer/Control/HSplitContainer/ScrollContainer"]
 offset_right = 257.0
-offset_bottom = 381.0
+offset_bottom = 416.0
 
 [node name="Day1Button" type="Button" parent="CanvasLayer/Control/HSplitContainer/ScrollContainer/VBoxContainer"]
 offset_right = 257.0
@@ -127,6 +127,13 @@ offset_bottom = 381.0
 text = "Day 11 - Monkey in the Middle"
 alignment = 0
 
+[node name="Day12Button" type="Button" parent="CanvasLayer/Control/HSplitContainer/ScrollContainer/VBoxContainer"]
+offset_top = 385.0
+offset_right = 257.0
+offset_bottom = 416.0
+text = "Day 12 - Hill Climbing Algorithm"
+alignment = 0
+
 [node name="AnswerContainer" type="PanelContainer" parent="CanvasLayer/Control/HSplitContainer"]
 offset_left = 276.0
 offset_right = 1152.0
@@ -144,3 +151,4 @@ offset_bottom = 618.0
 [connection signal="pressed" from="CanvasLayer/Control/HSplitContainer/ScrollContainer/VBoxContainer/Day9Button" to="." method="_on_Day9Button_pressed"]
 [connection signal="pressed" from="CanvasLayer/Control/HSplitContainer/ScrollContainer/VBoxContainer/Day10Button" to="." method="_on_Day10Button_pressed"]
 [connection signal="pressed" from="CanvasLayer/Control/HSplitContainer/ScrollContainer/VBoxContainer/Day11Button" to="." method="_on_day_11_button_pressed"]
+[connection signal="pressed" from="CanvasLayer/Control/HSplitContainer/ScrollContainer/VBoxContainer/Day12Button" to="." method="_on_day_12_button_pressed"]
