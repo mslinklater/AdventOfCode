@@ -3,13 +3,12 @@ using System;
 
 public class mainController : Node2D
 {
-	// Declare member variables here. Examples:
-	// private int a = 2;
-	// private string b = "text";
+	private HSplitContainer projectBrowserHSplitContainer;
 
 	// Called when the node enters the scene tree for the first time.
 	public override void _Ready()
 	{
+		projectBrowserHSplitContainer = GetNode<HSplitContainer>("CanvasLayer/ProjectBrowserHSplitContainer");
 		GD.Print("Hello from C-Sharp");
 	}
 
@@ -18,4 +17,10 @@ public class mainController : Node2D
 //  {
 //      
 //  }
+
+	public void OnProjectBrowserButtonPressed()
+	{
+		projectBrowserHSplitContainer.Collapsed = !projectBrowserHSplitContainer.Collapsed;
+	}
+
 }
