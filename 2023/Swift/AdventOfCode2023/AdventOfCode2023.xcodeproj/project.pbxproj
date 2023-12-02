@@ -10,6 +10,7 @@
 		3B68E7702B133C72002F5FC5 /* main.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B68E76F2B133C72002F5FC5 /* main.swift */; };
 		3B68E7782B133CED002F5FC5 /* Day01.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B68E7772B133CED002F5FC5 /* Day01.swift */; };
 		3B68E77C2B13419F002F5FC5 /* DayBase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B68E77B2B13419F002F5FC5 /* DayBase.swift */; };
+		3B7B6DB12B1B39440006F17E /* Day02.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B7B6DB02B1B39440006F17E /* Day02.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -30,6 +31,7 @@
 		3B68E76F2B133C72002F5FC5 /* main.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = main.swift; sourceTree = "<group>"; };
 		3B68E7772B133CED002F5FC5 /* Day01.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Day01.swift; sourceTree = "<group>"; };
 		3B68E77B2B13419F002F5FC5 /* DayBase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DayBase.swift; sourceTree = "<group>"; };
+		3B7B6DB02B1B39440006F17E /* Day02.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Day02.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -66,6 +68,8 @@
 				3B68E7762B133CC4002F5FC5 /* Day01 */,
 				3B68E76F2B133C72002F5FC5 /* main.swift */,
 				3B68E77B2B13419F002F5FC5 /* DayBase.swift */,
+				3B68E7772B133CED002F5FC5 /* Day01.swift */,
+				3B7B6DB02B1B39440006F17E /* Day02.swift */,
 			);
 			path = AdventOfCode2023;
 			sourceTree = "<group>";
@@ -73,7 +77,6 @@
 		3B68E7762B133CC4002F5FC5 /* Day01 */ = {
 			isa = PBXGroup;
 			children = (
-				3B68E7772B133CED002F5FC5 /* Day01.swift */,
 			);
 			path = Day01;
 			sourceTree = "<group>";
@@ -138,6 +141,7 @@
 			files = (
 				3B68E77C2B13419F002F5FC5 /* DayBase.swift in Sources */,
 				3B68E7702B133C72002F5FC5 /* main.swift in Sources */,
+				3B7B6DB12B1B39440006F17E /* Day02.swift in Sources */,
 				3B68E7782B133CED002F5FC5 /* Day01.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

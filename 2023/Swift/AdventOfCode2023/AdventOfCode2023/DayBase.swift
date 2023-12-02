@@ -7,6 +7,8 @@
 
 import Foundation
 
+// Handy extension to the String type
+
 extension String {
     func indicesOf(string: String) -> [Int] {
         var indices = [Int]()
@@ -25,6 +27,8 @@ extension String {
     }
 }
 
+// Base class - push common stuff in here
+
 class DayBase {
     func run(filename: String, part: Int) -> Int {
         return 0
@@ -32,6 +36,7 @@ class DayBase {
     
     func fileAsLines(filename: String) -> [String]
     {
+        // TODO - Get the root path the proper way... this is a filthy hack
         let root = "/Users/link/Code/AdventOfCode/2023/Swift/AdventOfCode2023/AdventOfCode2023/Input/"
         var ret = Array<String>()
 
