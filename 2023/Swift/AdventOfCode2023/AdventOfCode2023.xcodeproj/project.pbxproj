@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		3B01FF242B1C625A00F98532 /* Day03.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B01FF232B1C625A00F98532 /* Day03.swift */; };
 		3B68E7702B133C72002F5FC5 /* main.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B68E76F2B133C72002F5FC5 /* main.swift */; };
 		3B68E7782B133CED002F5FC5 /* Day01.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B68E7772B133CED002F5FC5 /* Day01.swift */; };
 		3B68E77C2B13419F002F5FC5 /* DayBase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B68E77B2B13419F002F5FC5 /* DayBase.swift */; };
@@ -26,6 +27,7 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		3B01FF232B1C625A00F98532 /* Day03.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Day03.swift; sourceTree = "<group>"; };
 		3B1A58792B19BD4F00A4F4EE /* Input */ = {isa = PBXFileReference; lastKnownFileType = folder; path = Input; sourceTree = "<group>"; };
 		3B68E76C2B133C72002F5FC5 /* AdventOfCode2023 */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = AdventOfCode2023; sourceTree = BUILT_PRODUCTS_DIR; };
 		3B68E76F2B133C72002F5FC5 /* main.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = main.swift; sourceTree = "<group>"; };
@@ -65,20 +67,13 @@
 			isa = PBXGroup;
 			children = (
 				3B1A58792B19BD4F00A4F4EE /* Input */,
-				3B68E7762B133CC4002F5FC5 /* Day01 */,
 				3B68E76F2B133C72002F5FC5 /* main.swift */,
 				3B68E77B2B13419F002F5FC5 /* DayBase.swift */,
 				3B68E7772B133CED002F5FC5 /* Day01.swift */,
 				3B7B6DB02B1B39440006F17E /* Day02.swift */,
+				3B01FF232B1C625A00F98532 /* Day03.swift */,
 			);
 			path = AdventOfCode2023;
-			sourceTree = "<group>";
-		};
-		3B68E7762B133CC4002F5FC5 /* Day01 */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = Day01;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -142,6 +137,7 @@
 				3B68E77C2B13419F002F5FC5 /* DayBase.swift in Sources */,
 				3B68E7702B133C72002F5FC5 /* main.swift in Sources */,
 				3B7B6DB12B1B39440006F17E /* Day02.swift in Sources */,
+				3B01FF242B1C625A00F98532 /* Day03.swift in Sources */,
 				3B68E7782B133CED002F5FC5 /* Day01.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
