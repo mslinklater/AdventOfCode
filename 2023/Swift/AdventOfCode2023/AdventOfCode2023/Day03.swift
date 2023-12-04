@@ -31,7 +31,9 @@ class Day03 : DayBase {
         numbers = [Number]()
         parseInput(filename: filename)
         findNumbers()
+        
         if part == 1 {
+            // Part 1
             // find the numbers with symbols in a surrounding cell and sum
             for number in numbers {
                 var foundSymbol = false
@@ -46,7 +48,8 @@ class Day03 : DayBase {
                 }
             }
         } else {
-            // find gears
+            // Part 2
+            // find gears with 2 adjacent numbers, add product to total
             var gears = [Gear]()
             for row in 0..<grid.count {
                 for col in 0..<grid[row].count {
@@ -93,6 +96,7 @@ class Day03 : DayBase {
                     newNumber.bottom = row + 1
                     newNumber.value = grid[row][col].wholeNumberValue!
                     col += 1
+                    // build the number character by character
                     while col < grid[row].count && grid[row][col] >= "0" && grid[row][col] <= "9" {
                         newNumber.value *= 10
                         newNumber.value += grid[row][col].wholeNumberValue!
