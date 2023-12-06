@@ -21,7 +21,7 @@ class Day04 : DayBase {
         var total = 0
         cards.removeAll()
         
-        var lines = fileAsLines(filename: filename)
+        let lines = fileAsLines(filename: filename)
         
         // parse input
         for line in lines {
@@ -41,6 +41,7 @@ class Day04 : DayBase {
         }
         
         if part == 1 {
+            // Part 1
             for card in cards {
                 let intersect = card.balls.intersection(card.draw)
                 if intersect.count > 0 {
@@ -48,12 +49,13 @@ class Day04 : DayBase {
                 }
             }
         } else {
+            // Part 2
             var numEach = Array<Int>()
-            for i in 0..<cards.count {
+            for _ in 0..<cards.count {
                 numEach.append(1)
             }
             for i in 0..<cards.count {
-                var intersectNum = cards[i].balls.intersection(cards[i].draw).count
+                let intersectNum = cards[i].balls.intersection(cards[i].draw).count
                 
                 for j in 0..<intersectNum {
                     numEach[cards[i].num + j] += numEach[i]
@@ -62,7 +64,6 @@ class Day04 : DayBase {
             for i in 0..<numEach.count {
                 total += numEach[i]
             }
-            print(numEach)
         }
         return total
     }
