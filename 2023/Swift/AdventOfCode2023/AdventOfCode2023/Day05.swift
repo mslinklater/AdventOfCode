@@ -95,7 +95,6 @@ class Day05 : DayBase {
             for seed in seeds {
                 var thisSeed = seed
                 for mapping in mappings {
-                    let prevSeed = thisSeed
                     thisSeed = mapping.get(thisSeed)
                 }
                 lowest = min(lowest, thisSeed)

@@ -26,7 +26,7 @@ class Day06 : DayBase {
             for run in runs {
                 var numBetter = 0
                 for i in 1 ..< run.time {
-                    var dist = (run.time - i) * i
+                    let dist = (run.time - i) * i
                     if dist > run.distance {
                         numBetter += 1
                     }
@@ -35,9 +35,9 @@ class Day06 : DayBase {
             }
         } else {
             total = 0
-            var run = Run(time: 58996469, distance: 478223210191071)    // yes... couldn't be arsed parsing this out properly
+            let run = Run(time: 58996469, distance: 478223210191071)    // yes... couldn't be arsed parsing this out properly
             for i in 1 ..< run.time {
-                var dist = (run.time - i) * i
+                let dist = (run.time - i) * i
                 if dist > run.distance {
                     total += 1
                 }
