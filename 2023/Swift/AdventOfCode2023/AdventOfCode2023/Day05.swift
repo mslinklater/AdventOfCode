@@ -16,7 +16,7 @@ class Day05 : DayBase {
         var size: Int
     }
     
-    struct MappingRange {
+    struct Transform {
         var to = 0
         var from = 0
         var size = 0
@@ -25,56 +25,59 @@ class Day05 : DayBase {
     struct Mapping {
         var fromType = ""
         var toType = ""
-        var ranges = [MappingRange]()
+        var transforms = [Transform]()
         var toMappingIndex = 0
         
         func get(_ sourceIndex: Int) -> Int {
-            for range in ranges {
-                if sourceIndex >= range.from && sourceIndex < range.from + range.size {
-                    let diff = range.to - range.from
+            for transform in transforms {
+                if sourceIndex >= transform.from && sourceIndex < transform.from + transform.size {
+                    let diff = transform.to - transform.from
                     return sourceIndex + diff
                 }
             }
             return sourceIndex
         }
         
-        func rangeGet(_ source: [Range]) -> [Range] {
-            var ret = [Range]()
-            for sourceRange in source {
+        func rangeGet(_ sourceIn: [Range]) -> [Range] {
+            var source = sourceIn
+//            for sourceRange in source {
+            for i in 0 ..< source.count {
                 print("-- source --")
-                for range in ranges {
-                    print("-- range --")
-                    let sourceStart = sourceRange.start
-                    let sourceEnd = sourceRange.start + sourceRange.size
-                    let rangeStart = range.from
-                    let rangeEnd = range.from + range.size
-                    let rangeDelta = range.to - range.from
-                    print("Splitting \(sourceStart)-\(sourceEnd) by \(rangeStart)-\(rangeEnd)")
-                    if sourceEnd < rangeStart {
+                for transform in transforms {
+                    print("-- transform --")
+                    let sourceStart = source[i].start
+                    let sourceEnd = source[i].start + source[i].size
+                    
+                    let transformStart = transform.from
+                    let transformEnd = transform.from + transform.size
+                    let transformDelta = transform.to - transform.from
+                    
+                    print("Splitting \(sourceStart)-\(sourceEnd) by \(transformStart)-\(transformEnd):\(transformDelta)")
+                    
+                    if sourceEnd < transformStart {
                         // source lower
-                        print("no-change... below")
-                        ret.append(sourceRange)
-                    } else if sourceStart > rangeEnd {
+                    } else if sourceStart > transformEnd {
                         // source higher
-                        print("no-change above")
-                        ret.append(sourceRange)
-                    } else if sourceStart < rangeStart && sourceEnd > rangeEnd {
-                        // source covers range - split to 3
-                        assert(false, "A")
-                    } else if sourceStart > rangeStart && sourceEnd < rangeEnd {
-                        // source contained within range - just move it
-                        print("contained within... moving \(rangeDelta)")
-                        ret.append(Range(start: sourceStart + rangeDelta, size: sourceRange.size))
-                    } else if sourceStart > rangeStart && sourceEnd < rangeEnd {
-                        // source intersects range start - split to 2
-                        assert(false, "C")
+                    } else if sourceStart < transformStart && sourceEnd > transformEnd {
+                        // source covers transform - split to 3
+                        print("A")
+                    } else if sourceStart >= transformStart && sourceEnd <= transformEnd {
+                        // source contained within transform - just move it
+                        print("contained within... moving \(transformDelta)")
+                        source[i].start += transformDelta
+                    } else if sourceStart < transformStart && sourceEnd > transformEnd {
+                        // source intersects transform start - split to 2
+                        print("C")
                     } else {
-                        // source intersects range end - split to 2
-                        assert(false, "D")
+                        // source intersects transform end - split to 2
+                        source[i].size -= sourceEnd - transformStart
+                        var newRange = Range(start:source[i].start + transformDelta, size:sourceEnd - transformStart)
+                        source.insert(newRange, at: i + 1)
+                        print("D")
                     }
                 }
             }
-            return ret
+            return source
         }
     }
 
@@ -145,11 +148,11 @@ class Day05 : DayBase {
                 var lookAhead = iLine + 1
                 while lookAhead < lines.count && lines[lookAhead].count > 0 {
                     let mappingsStrings = lines[lookAhead].split(separator: " ")
-                    var newMappingRange = MappingRange()
+                    var newMappingRange = Transform()
                     newMappingRange.to = Int(mappingsStrings[0])!
                     newMappingRange.from = Int(mappingsStrings[1])!
                     newMappingRange.size = Int(mappingsStrings[2])!
-                    newMapping.ranges.append(newMappingRange)
+                    newMapping.transforms.append(newMappingRange)
                     lookAhead += 1
                 }
                 mappings.append(newMapping)
