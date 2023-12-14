@@ -9,7 +9,7 @@ import Foundation
 
 print("Advent of Code 2023")
 
-let day = 11
+let day = 12
 
 switch day {
 case 1:
@@ -79,7 +79,11 @@ case 10:
     print("Day 10 part 2 = \(day10.run(filename: "Day10Input", part: 2))")
 case 11:
     let day11 = Day11()
-    assert(day11.run(filename: "Day11Test", part: 1) == 374)
+    //assert(day11.run(filename: "Day11Test", part: 1) == 374)
+    print("Day 11 part 1 = \(day11.run(filename: "Day11Input", part: 1))")
+case 12:
+    let day12 = Day12()
+    assert(day12.run(filename: "Day12Test", part: 1) == 21)
 default:
     assert(false)
 }

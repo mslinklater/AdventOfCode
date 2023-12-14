@@ -17,6 +17,25 @@ class Day11 : DayBase {
     var xCost = [Int]() // map high costs, default is one
     var yCost = [Int]()
     
+    func cost(_ start: Galaxy, _ end: Galaxy) -> Int {
+        var ret = 0
+        let xMin = min(start.x, end.x)
+        let xMax = max(start.x, end.x)
+        let yMin = min(start.y, end.y)
+        let yMax = max(start.y, end.y)
+        var xPos = xMin + 1
+        while xPos <= xMax {
+            ret += xCost[xPos]
+            xPos += 1
+        }
+        var yPos = yMin + 1
+        while yPos <= yMax {
+            ret += yCost[yPos]
+            yPos += 1
+        }
+        return ret
+    }
+    
     override func run(filename: String, part: Int) -> Int {
         galaxies = [Galaxy]()
         xCost = [Int]() // map high costs, default is one
@@ -26,7 +45,7 @@ class Day11 : DayBase {
         if part == 1 {
             for from in 0..<galaxies.count {
                 for to in from + 1..<galaxies.count {
-                    
+                    total += cost(galaxies[from], galaxies[to])
                 }
             }
         } else {
@@ -63,16 +82,16 @@ class Day11 : DayBase {
         }
         for i in 0..<lines[0].count {
             if colSet.contains(i) {
-                xCost.append(2)
-            } else {
                 xCost.append(1)
+            } else {
+                xCost.append(1000000)
             }
         }
         for i in 0..<iLine {
             if rowSet.contains(i) {
-                yCost.append(2)
-            } else {
                 yCost.append(1)
+            } else {
+                yCost.append(1000000)
             }
         }
     }
