@@ -4,7 +4,7 @@
 
 #include "utils.h"
 
-int solve(const std::string& filename, int part)
+int Solve(const std::string& filename, int part)
 {
     int answer = 0;
     std::vector<int> list1;
@@ -47,13 +47,13 @@ int solve(const std::string& filename, int part)
 
 int main(int argc, const char** argv)
 {
-    assert(solve("../input/day1test", 1) == 11);
+    assert(Solve("../input/day1test", 1) == 11);
     
-    assert(solve("../input/day1", 1) == 1320851);
-    assert(solve("../input/day1", 2) == 26859182);
+    assert(Solve("../input/day1", 1) == 1320851);
+    assert(Solve("../input/day1", 2) == 26859182);
 
-    std::cout << "problem 1:" << solve("../input/day1", 1) << std::endl;
-    std::cout << "problem 2:" << solve("../input/day1", 2) << std::endl;
+    std::cout << "problem 1:" << Solve("../input/day1", 1) << std::endl;
+    std::cout << "problem 2:" << Solve("../input/day1", 2) << std::endl;
 
     return 0;
 }
