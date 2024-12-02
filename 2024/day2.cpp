@@ -24,6 +24,19 @@ EDir CalcPair(int a, int b, EDir last)
     return EDir::kInvalid;
 }
 
+bool CaclSeries(const std::vector<int>& series)
+{
+    bool safe = true;
+    EDir last = EDir::kUnknown;
+    for(int i=0 ; i<series.size()-1 ; ++i)
+    {
+        EDir next = CalcPair(series[i], series[i+1], last);
+        last = next;
+        safe &= last != EDir::kInvalid;
+    }
+    return safe;
+}
+
 int Solve(const std::string& filename, int part)
 {
     int answer = 0;
@@ -37,14 +50,7 @@ int Solve(const std::string& filename, int part)
 
         if(part == 1)
         {
-            bool safe = true;
-            EDir last = EDir::kUnknown;
-            for(int i=0 ; i<entries.size()-1 ; ++i)
-            {
-                EDir next = CalcPair(numbers[i], numbers[i+1], last);
-                last = next;
-                safe &= last != EDir::kInvalid;
-            }
+            bool safe = CaclSeries(numbers);
             if(safe)
             {
                 answer++;
@@ -52,7 +58,17 @@ int Solve(const std::string& filename, int part)
         }
         else
         {
-            // do part 2 and clean up
+            bool worked = false;
+            for(int iDel=0 ; iDel < numbers.size() ; ++iDel)
+            {
+                std::vector<int> testNumbers = numbers;
+                testNumbers.erase(testNumbers.begin() + iDel);
+                worked |= CaclSeries(testNumbers);
+            }
+            if(worked)
+            {
+                answer++;
+            }
         }
     }
     return answer;
@@ -63,10 +79,10 @@ int main(int argc, const char** argv)
     assert(Solve("../input/day2test", 1) == 2);
     
     assert(Solve("../input/day2", 1) == 502);
-//    assert(solve("../input/day1", 2) == 26859182);
+    assert(Solve("../input/day2", 2) == 544);
 
     std::cout << "problem 1:" << Solve("../input/day2", 1) << std::endl;
-//    std::cout << "problem 2:" << solve("../input/day1", 2) << std::endl;
+    std::cout << "problem 2:" << Solve("../input/day2", 2) << std::endl;
 
     return 0;
 }
