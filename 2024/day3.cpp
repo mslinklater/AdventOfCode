@@ -4,6 +4,9 @@
 
 #include "utils.h"
 
+// 93994894
+// 89823704
+
 struct Instruction
 {
     int first;
@@ -41,6 +44,8 @@ void ParseCommands(const std::string& line, std::vector<Command>& commands)
             lastEnable = thisEnable;
         }
     }
+    int i=0;
+    i++;
 }
 
 void ParseLine(const std::string& line, std::vector<Instruction>& instructionsRef, std::vector<Command>* pCommands)
@@ -63,12 +68,18 @@ void ParseLine(const std::string& line, std::vector<Instruction>& instructionsRe
 
                     if(pCommands)
                     {
-                        for(int i=0 ; i<pCommands->size() - 1 ; i++)
+                        if(searchpos > 1809)
                         {
-                            if(((*pCommands)[i].pos < searchpos) && ((*pCommands)[i+1].pos > searchpos))
+                            int i=0;
+                            i++;
+                        }
+                        for(int i=0 ; i<pCommands->size() ; i++)
+                        {
+                            if((*pCommands)[i].pos > searchpos)
                             {
-                                add = (*pCommands)[i].isEnable;
+                                break;
                             }
+                            add = (*pCommands)[i].isEnable;
                         }
                     }
 
@@ -88,11 +99,11 @@ void ParseLine(const std::string& line, std::vector<Instruction>& instructionsRe
 int Solve(const std::string& filename, int part)
 {
     int answer = 0;
-    std::vector<std::string> file = GetFileAsLines(filename);
+    std::string line = GetFileAsSingleLine(filename);
     std::vector<Instruction> instructions;
     std::vector<Command> commands;
 
-    for(auto line : file)
+//    for(auto line : file)
     {
         commands.clear();
         ParseCommands(line, commands);
@@ -118,7 +129,7 @@ int main(int argc, const char** argv)
     assert(Solve("../input/day3test", 2) == 48);
     
     assert(Solve("../input/day3", 1) == 167090022);
-//    assert(Solve("../input/day3", 2) == 544);
+    assert(Solve("../input/day3", 2) == 89823704);
 
     std::cout << "problem 1:" << Solve("../input/day3", 1) << std::endl;
     std::cout << "problem 2:" << Solve("../input/day3", 2) << std::endl;

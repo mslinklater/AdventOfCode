@@ -23,6 +23,24 @@ std::vector<std::string> GetFileAsLines(std::filesystem::path path)
     return lines;
 }
 
+std::string GetFileAsSingleLine(std::filesystem::path path)
+{
+    std::string ret;
+    std::ifstream infile;
+
+    infile.open(path);
+    if(infile.is_open())
+    {
+        std::string line;
+        while(std::getline(infile, line))
+        {
+            ret.append(line);
+        }
+    }
+
+    return ret;
+}
+
 std::vector<std::string> SplitStringByChar(const std::string& str, char c) 
 {
     std::vector<std::string> ret;
