@@ -4,9 +4,6 @@
 
 #include "utils.h"
 
-// 93994894
-// 89823704
-
 struct Instruction
 {
     int first;
@@ -44,8 +41,6 @@ void ParseCommands(const std::string& line, std::vector<Command>& commands)
             lastEnable = thisEnable;
         }
     }
-    int i=0;
-    i++;
 }
 
 void ParseLine(const std::string& line, std::vector<Instruction>& instructionsRef, std::vector<Command>* pCommands)
@@ -68,11 +63,6 @@ void ParseLine(const std::string& line, std::vector<Instruction>& instructionsRe
 
                     if(pCommands)
                     {
-                        if(searchpos > 1809)
-                        {
-                            int i=0;
-                            i++;
-                        }
                         for(int i=0 ; i<pCommands->size() ; i++)
                         {
                             if((*pCommands)[i].pos > searchpos)
@@ -103,16 +93,13 @@ int Solve(const std::string& filename, int part)
     std::vector<Instruction> instructions;
     std::vector<Command> commands;
 
-//    for(auto line : file)
-    {
-        commands.clear();
-        ParseCommands(line, commands);
+    commands.clear();
+    ParseCommands(line, commands);
 
-        if(part == 1)
-            ParseLine(line, instructions, nullptr);
-        else
-            ParseLine(line, instructions, &commands);
-    }
+    if(part == 1)
+        ParseLine(line, instructions, nullptr);
+    else
+        ParseLine(line, instructions, &commands);
 
     // sum of products
     for(auto ins : instructions)
