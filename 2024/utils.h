@@ -46,3 +46,19 @@ std::vector<int> IntVecFromStringVec(const std::vector<std::string> strvec)
     }
     return ret;
 }
+
+std::vector<int> PositionsOfString(std::string pattern, std::string data)
+{
+    std::vector<int> ret;
+    int search = 0;
+    while(search != std::string::npos)
+    {
+        search = data.find(pattern, search);
+        if(search != std::string::npos)
+        {
+            ret.push_back(search);
+            search++;
+        }
+    }
+    return ret;
+}
