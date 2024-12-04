@@ -2,11 +2,11 @@
 #include <cassert>
 #include "utils.h"
 
-int solve(std::filesystem::path path, int part)
+int solve(Path path, int part)
 {
     int answer = 0;
 
-    std::vector<std::string> lines = GetFileAsLines(path);
+    StringVector lines = GetFileAsLines(path);
 
     if(part == 1)
     {

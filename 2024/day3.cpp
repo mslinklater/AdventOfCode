@@ -112,14 +112,14 @@ int Solve(const std::string& filename, int part)
 
 int main(int argc, const char** argv)
 {
-    assert(Solve("../input/day3test", 1) == 161);
-    assert(Solve("../input/day3test", 2) == 48);
+    assert(Solve("../2024/input/day3test", 1) == 161);
+    assert(Solve("../2024/input/day3test", 2) == 48);
     
-    assert(Solve("../input/day3", 1) == 167090022);
-    assert(Solve("../input/day3", 2) == 89823704);
+    assert(Solve("../2024/input/day3", 1) == 167090022);
+    assert(Solve("../2024/input/day3", 2) == 89823704);
 
-    std::cout << "problem 1:" << Solve("../input/day3", 1) << std::endl;
-    std::cout << "problem 2:" << Solve("../input/day3", 2) << std::endl;
+    std::cout << "problem 1:" << Solve("../2024/input/day3", 1) << std::endl;
+    std::cout << "problem 2:" << Solve("../2024/input/day3", 2) << std::endl;
 
     return 0;
 }

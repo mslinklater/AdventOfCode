@@ -3,46 +3,17 @@
 #include "utils.h"
 #include <set>
 
-struct Coord
-{
-    int x;
-    int y;
-};
-
-int solve(std::filesystem::path path, int part)
+int solve(Path path, int part)
 {
     int answer = 0;
-    std::vector<std::string> lines = GetFileAsLines(path);
-    std::set<Coord> houseSet;
+    StringVector lines = GetFileAsLines(path);
+    std::set<Vec2> houseSet;
     if(part == 1)
     {
         int x = 0;
         int y = 0;
-        Coord c = {0,0};
-#if 0
-        houseSet.insert(c);
-        for(auto dir : lines[0])
-        {
-            switch(dir)
-            {
-                case '>':
-                    c.x++;
-                    break;
-                case '<':
-                    c.x--;
-                    break;
-                case '^':
-                    c.y++;
-                    break;
-                case 'v':
-                    c.y--;
-                    break;
-                default:
-                    break;
-            }
-            houseSet.insert(c);
-        }
-#endif
+        Vec2 c = {0,0};
+
         answer = houseSet.size();
     }
     else

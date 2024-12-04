@@ -25,6 +25,8 @@ struct Vec2
     int y;
 };
 
+typedef std::vector<Vec2> Vec2Vector;
+
 StringVector GetFileAsLines(Path path)
 {
     StringVector lines;

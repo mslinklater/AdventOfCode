@@ -4,35 +4,51 @@
 
 #include "utils.h"
 
-bool WillFit(int x, int y, int sizeX, int sizeY, int length, EDirection dir)
+bool DoesMatch(const StringVector& pattern, const StringVector& data, Vec2 pos)
 {
-    bool ret = false;
-    switch(dir)
+    if(pattern.size() + pos.y > data.size())
+        return false;
+    if(pattern[0].size() + pos.x > data[0].size())
+        return false;
+
+    bool match = true;
+    for(int x=0 ; x<pattern[0].size() ; ++x)
     {
-        case EDirection::Up:
-            ret = (x >= 0) && (x < sizeX) && (y < sizeY) && (y >= length); 
-            break;
-        case EDirection::Down:
-            ret = (x >= 0) && (x < sizeX) && (y <= sizeY - length) && (y > 0); 
-            break;
-        case EDirection::Left:
-            ret = (x >= length) && (x < sizeX) && (y < sizeY) && (y >= 0); 
-            break;
-        case EDirection::Right:
-            ret = (x >= 0) && (x <= sizeX - length) && (y < sizeY) && (y >= 0); 
-            break;
-        default:       
-            break;
+        for(int y=0 ; y<pattern.size() ; ++y)
+        {
+            if(pattern[y][x] != '.')
+            {
+                if(data[y+pos.y][x+pos.x] != pattern[y][x])
+                {
+                    match = false;
+                }
+            }
+        }
     }
-    return ret;
+    return match;
 }
 
 int Solve(const std::string& filename, int part)
 {
     int answer = 0;
-    StringVector data = GetFileAsLines(filename);
 
-    String pattern = "XMAS";
+    StringVector patterns[8];
+    patterns[0] = {"XMAS"};
+    patterns[1] = {"SAMX"};
+    patterns[2] = {"X", "M", "A", "S"};
+    patterns[3] = {"S", "A", "M", "X"};
+    patterns[4] = {"X...", ".M..", "..A.", "...S"};
+    patterns[5] = {"S...", ".A..", "..M.", "...X"};
+    patterns[6] = {"...X", "..M.", ".A..", "S..."};
+    patterns[7] = {"...S", "..A.", ".M..", "X..."};
+
+    StringVector patterns2[4];
+    patterns2[0] = {"M.S", ".A.", "M.S"};
+    patterns2[1] = {"S.S", ".A.", "M.M"};
+    patterns2[2] = {"M.M", ".A.", "S.S"};
+    patterns2[3] = {"S.M", ".A.", "S.M"};
+
+    StringVector data = GetFileAsLines(filename);
 
     int width = data[0].size();
     int height = data.size();
@@ -41,7 +57,26 @@ int Solve(const std::string& filename, int part)
     {
         for(int y = 0; y < height ; ++y)
         {
-            Vec2 start(x, y);
+            if(part == 1)
+            {
+                for(int p = 0; p < 8 ; ++p)
+                {
+                    if(DoesMatch(patterns[p], data, Vec2(x,y)))
+                    {
+                        answer++;
+                    }
+                }
+            }
+            else
+            {
+                for(int p = 0; p < 4 ; ++p)
+                {
+                    if(DoesMatch(patterns2[p], data, Vec2(x,y)))
+                    {
+                        answer++;
+                    }
+                }
+            }
         }
     }
 
@@ -50,14 +85,14 @@ int Solve(const std::string& filename, int part)
 
 int main(int argc, const char** argv)
 {
-    assert(Solve("../input/day4test", 1) == 14);
-//    assert(Solve("../input/day3test", 2) == 48);
+    assert(Solve("../input/day4test", 1) == 18);
+    assert(Solve("../input/day4test", 2) == 9);
     
-//    assert(Solve("../input/day3", 1) == 167090022);
-//    assert(Solve("../input/day3", 2) == 89823704);
+    assert(Solve("../input/day4", 1) == 2406);
+    assert(Solve("../input/day4", 2) == 1807);
 
-    std::cout << "problem 1:" << Solve("../input/day3", 1) << std::endl;
-//    std::cout << "problem 2:" << Solve("../input/day3", 2) << std::endl;
+    std::cout << "problem 1:" << Solve("../input/day4", 1) << std::endl;
+    std::cout << "problem 2:" << Solve("../input/day4", 2) << std::endl;
 
     return 0;
 }
