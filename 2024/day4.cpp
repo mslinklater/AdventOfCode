@@ -4,30 +4,6 @@
 
 #include "utils.h"
 
-bool DoesMatch(const StringVector& pattern, const StringVector& data, Vec2 pos)
-{
-    if(pattern.size() + pos.y > data.size())
-        return false;
-    if(pattern[0].size() + pos.x > data[0].size())
-        return false;
-
-    bool match = true;
-    for(int x=0 ; x<pattern[0].size() ; ++x)
-    {
-        for(int y=0 ; y<pattern.size() ; ++y)
-        {
-            if(pattern[y][x] != '.')
-            {
-                if(data[y+pos.y][x+pos.x] != pattern[y][x])
-                {
-                    match = false;
-                }
-            }
-        }
-    }
-    return match;
-}
-
 int Solve(const std::string& filename, int part)
 {
     int answer = 0;
@@ -61,7 +37,7 @@ int Solve(const std::string& filename, int part)
             {
                 for(int p = 0; p < 8 ; ++p)
                 {
-                    if(DoesMatch(patterns[p], data, Vec2(x,y)))
+                    if(DoesMatch2D(patterns[p], data, Vec2(x,y), '.'))
                     {
                         answer++;
                     }
@@ -71,7 +47,7 @@ int Solve(const std::string& filename, int part)
             {
                 for(int p = 0; p < 4 ; ++p)
                 {
-                    if(DoesMatch(patterns2[p], data, Vec2(x,y)))
+                    if(DoesMatch2D(patterns2[p], data, Vec2(x,y), '.'))
                     {
                         answer++;
                     }

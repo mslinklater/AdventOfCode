@@ -1,4 +1,6 @@
 #include <vector>
+#include <set>
+#include <map>
 #include <string>
 #include <filesystem>
 #include <fstream>
@@ -19,13 +21,22 @@ enum class EDirection
     Num
 };
 
+// Vec2
+
 struct Vec2
 {
     int x;
     int y;
+
+    bool operator<(const Vec2& other) const {
+        if(x == other.x) return y < other.y;
+        else return x < other.x;
+    }
 };
 
 typedef std::vector<Vec2> Vec2Vector;
+
+// File loading
 
 StringVector GetFileAsLines(Path path)
 {
@@ -62,6 +73,8 @@ String GetFileAsSingleLine(Path path)
 
     return ret;
 }
+
+// String helpers
 
 StringVector SplitStringByChar(const String& str, char c) 
 {
@@ -102,3 +115,28 @@ IntVector PositionsOfString(String pattern, String data)
     }
     return ret;
 }
+
+bool DoesMatch2D(const StringVector& pattern, const StringVector& data, Vec2 pos, char ignore)
+{
+    if(pattern.size() + pos.y > data.size())
+        return false;
+    if(pattern[0].size() + pos.x > data[0].size())
+        return false;
+
+    bool match = true;
+    for(int x=0 ; x<pattern[0].size() ; ++x)
+    {
+        for(int y=0 ; y<pattern.size() ; ++y)
+        {
+            if(pattern[y][x] != ignore)
+            {
+                if(data[y+pos.y][x+pos.x] != pattern[y][x])
+                {
+                    match = false;
+                }
+            }
+        }
+    }
+    return match;
+}
+
