@@ -5,15 +5,35 @@
 #include <iostream>
 #include <sstream>
 
-std::vector<std::string> GetFileAsLines(std::filesystem::path path)
+typedef std::string String;
+typedef std::filesystem::path Path;
+typedef std::vector<String> StringVector;
+typedef std::vector<int> IntVector;
+
+enum class EDirection
 {
-    std::vector<std::string> lines;
+    Up = 0,
+    Down,
+    Left,
+    Right,
+    Num
+};
+
+struct Vec2
+{
+    int x;
+    int y;
+};
+
+StringVector GetFileAsLines(Path path)
+{
+    StringVector lines;
     std::ifstream infile;
 
     infile.open(path);
     if(infile.is_open())
     {
-        std::string line;
+        String line;
         while(std::getline(infile, line))
         {
             lines.push_back(line);
@@ -23,15 +43,15 @@ std::vector<std::string> GetFileAsLines(std::filesystem::path path)
     return lines;
 }
 
-std::string GetFileAsSingleLine(std::filesystem::path path)
+String GetFileAsSingleLine(Path path)
 {
-    std::string ret;
+    String ret;
     std::ifstream infile;
 
     infile.open(path);
     if(infile.is_open())
     {
-        std::string line;
+        String line;
         while(std::getline(infile, line))
         {
             ret.append(line);
@@ -41,10 +61,10 @@ std::string GetFileAsSingleLine(std::filesystem::path path)
     return ret;
 }
 
-std::vector<std::string> SplitStringByChar(const std::string& str, char c) 
+StringVector SplitStringByChar(const String& str, char c) 
 {
-    std::vector<std::string> ret;
-    std::string sub;
+    StringVector ret;
+    String sub;
     std::istringstream tokenStream(str);
     
     while (std::getline(tokenStream, sub, c)) 
@@ -55,9 +75,9 @@ std::vector<std::string> SplitStringByChar(const std::string& str, char c)
     return ret;
 }
 
-std::vector<int> IntVecFromStringVec(const std::vector<std::string> strvec)
+IntVector IntVecFromStringVec(const StringVector strvec)
 {
-    std::vector<int> ret;
+    IntVector ret;
     for(auto s : strvec)
     {
         ret.push_back(std::stoi(s));
@@ -65,9 +85,9 @@ std::vector<int> IntVecFromStringVec(const std::vector<std::string> strvec)
     return ret;
 }
 
-std::vector<int> PositionsOfString(std::string pattern, std::string data)
+IntVector PositionsOfString(String pattern, String data)
 {
-    std::vector<int> ret;
+    IntVector ret;
     int search = 0;
     while(search != std::string::npos)
     {
