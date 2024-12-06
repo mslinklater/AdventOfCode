@@ -76,6 +76,13 @@ String GetFileAsSingleLine(Path path)
 
 // String helpers
 
+template <typename T>
+int FindIndexOf(const std::vector<T>& vec, const T& element)
+{
+    auto i = std::find(vec.begin(), vec.end(), element);
+    return i != vec.end() ? std::distance(vec.begin(), i) : -1;
+}
+
 StringVector SplitStringByChar(const String& str, char c) 
 {
     StringVector ret;

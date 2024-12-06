@@ -15,11 +15,8 @@ bool IsValid(const IntVector& pages, const std::vector<Rule>& rules)
 {
     for(auto r : rules)
     {
-        auto firstIt = std::find(pages.begin(), pages.end(), r.first);
-        int firstPos = firstIt != pages.end() ? std::distance(pages.begin(), firstIt) : -1;
-
-        auto secondIt = std::find(pages.begin(), pages.end(), r.second);
-        int secondPos = secondIt != pages.end() ? std::distance(pages.begin(), secondIt) : -1;
+        int firstPos = FindIndexOf<int>(pages, r.first);
+        int secondPos = FindIndexOf<int>(pages, r.second);
 
         if((firstPos != -1) && (secondPos != -1) && (firstPos > secondPos))
         {
