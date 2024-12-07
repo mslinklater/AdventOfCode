@@ -58,9 +58,12 @@ bool Walk(Grid2D<Cell>& grid)
     Vec2 pos;
     EDirection dir = EDirection::Up;
 
-    for(int y = 0; y < grid.Height() ; y++)
+    int width = grid.Width();
+    int height = grid.Height();
+
+    for(int y = 0; y < height ; y++)
     {
-        for(int x = 0; x < grid.Width() ; x++)
+        for(int x = 0; x < width ; x++)
         {
             Cell& c = grid.GetMutable(x,y);
             c.visited = false;
@@ -72,14 +75,10 @@ bool Walk(Grid2D<Cell>& grid)
             }
         }
     }
-    // clear occupancy
-    // find pos
-    // set direction
 
-    int width = grid.Width();
-    int height = grid.Height();
+    int steps = 0;
 
-    while(pos.x >= 0 && pos.x < width && pos.y >= 0 && pos.y < height)
+    while(pos.x >= 0 && pos.x < width && pos.y >= 0 && pos.y < height && steps < (width * height))
     {
         Cell& cellRef = grid.GetMutable(pos.x, pos.y);
         cellRef.visited = true;
@@ -129,8 +128,13 @@ bool Walk(Grid2D<Cell>& grid)
             default:
                 break;
         }
+        steps++;
     }
-    return false;
+
+    if(steps < (width * height))
+        return false;
+    else
+        return true;
 }
 
 //-------------------------
@@ -150,13 +154,6 @@ int Solve(const std::string& filename, int part)
         {
             Cell c;
             c.c = map[y][x];
-            c.visited = false;
-//            if(c.c == '^')
-//            {
-//                pos.x = x;
-//                pos.y = y;
-//                c.visited = true;
-//            }
             grid.Set(x, y, c);
         }
     }
@@ -173,6 +170,28 @@ int Solve(const std::string& filename, int part)
             }
         }
     }
+    else
+    {
+        for(int blockX = 0; blockX < width ; blockX++)
+        {
+            for(int blockY = 0; blockY < width ; blockY++)
+            {
+                Grid2D<Cell> testGrid = grid;
+                if(testGrid.Get(blockX,blockY).c == '.')
+                {
+                    Cell c;
+                    c.visited = false;
+                    c.c = '#';
+                    testGrid.Set(blockX, blockY, c);
+
+                    if(Walk(testGrid))
+                    {
+                        answer++;
+                    }
+                }
+            }
+        }
+    }
 
     return answer;
 }
@@ -180,13 +199,13 @@ int Solve(const std::string& filename, int part)
 int main(int argc, const char** argv)
 {
     assert(Solve("../input/day6test", 1) == 41);
-//    assert(Solve("../input/day5test", 2) == 6);
+    assert(Solve("../input/day6test", 2) == 6);
     
-    assert(Solve("../input/day5", 1) == 4973);
-//    assert(Solve("../input/day5", 2) == 4681);
+    assert(Solve("../input/day6", 1) == 4973);
+    assert(Solve("../input/day6", 2) == 1482);
 
     std::cout << "problem 1:" << Solve("../input/day6", 1) << std::endl;
-//    std::cout << "problem 2:" << Solve("../input/day5", 2) << std::endl;
+    std::cout << "problem 2:" << Solve("../input/day6", 2) << std::endl;
 
     return 0;
 }
