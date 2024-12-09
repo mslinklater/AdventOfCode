@@ -32,6 +32,14 @@ struct Vec2
         if(x == other.x) return y < other.y;
         else return x < other.x;
     }
+
+    Vec2 operator-(const Vec2& v) const {
+        return Vec2(this->x - v.x, this->y - v.y);
+    }
+
+    Vec2 operator+(const Vec2& v) const {
+        return Vec2(this->x + v.x, this->y + v.y);
+    }
 };
 
 typedef std::vector<Vec2> Vec2Vector;
@@ -158,3 +166,53 @@ std::vector<int> IntToBaseDigits(int num, int base, int minDigits)
     }
     return ret;
 }
+
+template<class T>
+class Grid2D
+{
+public:
+    Grid2D(int _width, int _height)
+    : width(_width)
+    , height(_height)
+    {
+        for(int y=0 ; y<height ; ++y)
+        {
+            std::vector<T> row;
+            row.resize(width);
+            e.push_back(row);
+        }
+    }
+
+    bool Inside(int x, int y)
+    {
+        return x >= 0 && x < width && y >= 0 && y < height;
+    }
+
+    void Set(int x, int y, const T& val)
+    {
+        e[y][x] = val;
+    }
+    const T& Get(int x, int y)
+    {
+        return e[y][x];
+    }
+    T& GetMutable(int x, int y)
+    {
+        return e[y][x];
+    }
+
+    int Height()
+    {
+        return e.size();
+    }
+
+    int Width()
+    {
+        return e[0].size();
+    }
+
+private:
+    int width;
+    int height;
+    std::vector<std::vector<T>> e;
+};

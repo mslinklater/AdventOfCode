@@ -10,46 +10,6 @@ struct Cell
     bool visited = false;
 };
 
-template<class T>
-class Grid2D
-{
-public:
-    Grid2D(int width, int height)
-    {
-        for(int y=0 ; y<height ; ++y)
-        {
-            std::vector<T> row;
-            row.resize(width);
-            e.push_back(row);
-        }
-    }
-
-    void Set(int x, int y, const T& val)
-    {
-        e[y][x] = val;
-    }
-    const T& Get(int x, int y)
-    {
-        return e[y][x];
-    }
-    T& GetMutable(int x, int y)
-    {
-        return e[y][x];
-    }
-
-    int Height()
-    {
-        return e.size();
-    }
-
-    int Width()
-    {
-        return e[0].size();
-    }
-
-private:
-    std::vector<std::vector<T>> e;
-};
 
 //-------------------------
 
