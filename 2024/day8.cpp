@@ -4,9 +4,29 @@
 
 #include "utils.h"
 
+struct Cell
+{
+    char val;
+    bool antinode;
+};
+
 uint64_t Solve(const std::string& filename, int part)
 {
     uint64_t answer = 0;
+    StringVector lines = GetFileAsLines(filename);
+    std::vector<std::vector<Cell>> map;
+
+    // populate map
+    for(int y=0 ; y<lines.size() ; y++)
+    {
+        map.push_back(std::vector<Cell>());
+        for(int x=0; x<lines[0].size() ; x++)
+        {
+            Cell c = {lines[y][x], false};
+            map[y].push_back(c);
+        }
+    }
+
     return answer;
 }
 
