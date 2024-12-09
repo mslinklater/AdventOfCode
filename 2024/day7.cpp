@@ -33,37 +33,47 @@ uint64_t Solve(const std::string& filename, int part)
     StringVector lines = GetFileAsLines(filename);
     ParseFile(lines, equations);
 
-    if(part == 1)
+    int base = 2;
+
+    if(part == 2)
     {
-        for(auto eq : equations)
+        base = 3;
+    }
+
+    for(auto eq : equations)
+    {
+        bool solvable = false;
+        int numOperators = eq.values.size() - 1;
+        int numIterations = std::pow(base, numOperators);
+
+        for(int iter = 0; iter < numIterations && !solvable; iter++)
         {
-            bool solvable = false;
-            for(int iter = 0; iter < 1 << eq.values.size() && !solvable; iter++)
+            uint64_t sum = eq.values[0];
+            std::vector<int> operatorVector = IntToBaseDigits(iter, base, numOperators);
+
+            for(int op = 0; op < numOperators; op++)
             {
-                uint64_t sum = eq.values[0];
-                for(int op = 0; op < eq.values.size()-1; op++)
+                switch(operatorVector[op])
                 {
-                    if(iter & (1 << op))
-                    {
+                    case 0:
                         sum = sum + eq.values[op+1];
-                    }
-                    else
-                    {
+                        break;
+                    case 1:
                         sum = sum * eq.values[op+1];
-                    }
-                }
-                if(sum == eq.answer)
-                {
-                    solvable = true;
-                    answer += sum;
+                        break;
+                    case 2:
+                        sum = std::stoll(std::to_string(sum) + std::to_string(eq.values[op+1]));
+                        break;
+                    default:
+                        break;
                 }
             }
-
+            if(sum == eq.answer)
+            {
+                solvable = true;
+                answer += sum;
+            }
         }
-    }
-    else
-    {
-
     }
 
     return answer;
@@ -72,13 +82,13 @@ uint64_t Solve(const std::string& filename, int part)
 int main(int argc, const char** argv)
 {
     assert(Solve("../input/day7test", 1) == 3749);
-//    assert(Solve("../input/day6test", 2) == 6);
+    assert(Solve("../input/day7test", 2) == 11387);
     
-    assert(Solve("../input/day6", 1) == 4998764814652);
-//    assert(Solve("../input/day5", 2) == 4681);
+    assert(Solve("../input/day7", 1) == 4998764814652);
+    assert(Solve("../input/day7", 2) == 37598910447546);
 
     std::cout << "problem 1:" << Solve("../input/day7", 1) << std::endl;
-//    std::cout << "problem 2:" << Solve("../input/day6", 2) << std::endl;
+    std::cout << "problem 2:" << Solve("../input/day7", 2) << std::endl;
 
     return 0;
 }

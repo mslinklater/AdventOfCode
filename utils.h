@@ -147,3 +147,14 @@ bool DoesMatch2D(const StringVector& pattern, const StringVector& data, Vec2 pos
     return match;
 }
 
+std::vector<int> IntToBaseDigits(int num, int base, int minDigits)
+{
+    std::vector<int> ret;
+    while((num > 0) || (ret.size() < minDigits))
+    {
+        int remainder = num % base;
+        ret.push_back(remainder);
+        num /= base;
+    }
+    return ret;
+}
