@@ -14,6 +14,10 @@ uint64_t Solve(const std::string& filename, int part)
 
 int main(int argc, const char** argv)
 {
+    assert(Solve("../input/day10test1", 1) == 1);
+    assert(Solve("../input/day10test2", 1) == 2);
+    assert(Solve("../input/day10test3", 1) == 4);
+    assert(Solve("../input/day10test4", 1) == 3);
     assert(Solve("../input/day10test", 1) == 36);
 //    assert(Solve("../input/day9test", 2) == 2858);
 
