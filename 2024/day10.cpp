@@ -5,9 +5,26 @@
 
 #include "utils.h"
 
+struct Node
+{
+    int value;
+    std::vector<Node> nextNodes;
+};
+
 uint64_t Solve(const std::string& filename, int part)
 {
     uint64_t answer = 0;
+    StringVector lines = GetFileAsLines(filename);
+    int width = lines[0].size();
+    int height = lines.size();
+    Grid2D<int> map(width, height);
+    for(int y=0 ; y<height ; y++)
+    {
+        for(int x=0; x<height ; x++)
+        {
+            map.Set(x, y, lines[y][x] - '0');
+        }
+    }
 
     return answer;
 }
