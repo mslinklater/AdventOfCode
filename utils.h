@@ -11,6 +11,7 @@ typedef std::string String;
 typedef std::filesystem::path Path;
 typedef std::vector<String> StringVector;
 typedef std::vector<int> IntVector;
+typedef std::vector<uint64_t> ULongVector;
 
 enum class EDirection
 {
@@ -111,6 +112,16 @@ IntVector IntVecFromStringVec(const StringVector strvec)
     for(auto s : strvec)
     {
         ret.push_back(std::stoi(s));
+    }
+    return ret;
+}
+
+ULongVector ULongVecFromStringVec(const StringVector strvec)
+{
+    ULongVector ret;
+    for(auto s : strvec)
+    {
+        ret.push_back(std::stoll(s));
     }
     return ret;
 }
