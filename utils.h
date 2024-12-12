@@ -183,7 +183,7 @@ public:
         }
     }
 
-    bool Inside(int x, int y)
+    bool Inside(int x, int y) const
     {
         return x >= 0 && x < width && y >= 0 && y < height;
     }
@@ -192,7 +192,7 @@ public:
     {
         e[y][x] = val;
     }
-    const T& Get(int x, int y)
+    const T& Get(int x, int y) const
     {
         return e[y][x];
     }
@@ -201,12 +201,12 @@ public:
         return e[y][x];
     }
 
-    int Height()
+    int Height() const
     {
         return e.size();
     }
 
-    int Width()
+    int Width() const
     {
         return e[0].size();
     }
