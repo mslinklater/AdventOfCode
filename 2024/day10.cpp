@@ -95,7 +95,8 @@ uint64_t Solve(const std::string& filename, int part)
             if(map.Get(x, y) == 0)
             {
                 Node* n = new Node();
-                n->pos = {x, y};
+                n->pos.x = x;
+                n->pos.y = y;
                 n->value = 0;
                 startNodes.push_back(n);
             }
