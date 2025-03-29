@@ -29,6 +29,13 @@ struct Vec2
     int x;
     int y;
 
+    Vec2(){}
+
+    Vec2(float _x, float _y)
+    : x(_x)
+    , y(_y)
+    {}
+
     bool operator<(const Vec2& other) const {
         if(x == other.x) return y < other.y;
         else return x < other.x;
