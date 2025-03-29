@@ -5,9 +5,38 @@
 
 #include "utils.h"
 
+struct Plot
+{
+    Grid2D<char> map;
+};
+
+struct InputCell
+{
+    char c = 0;
+    bool plotted = false;
+};
+
 uint64_t Solve(const std::string& filename, int part)
 {
     uint64_t answer = 0;
+    StringVector lines = GetFileAsLines(filename);
+    std::vector<Plot> plots;
+
+    // build map
+    Grid2D<InputCell> map(lines[0].size(), lines.size());
+    for(int y = 0; y < map.Height(); ++y)
+    {
+        for(int x = 0 ; x<map.Width() ; ++x)
+        {
+            InputCell cell;
+            cell.c = lines[y][x];
+            cell.plotted = false;
+        }
+    }
+
+    // scan the map and flood-fill for any unplotted call values
+
+    
     return answer;
 }
 
