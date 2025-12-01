@@ -1,2 +1,6 @@
 2022/Godot/.godot/
 build
+UnityAoC/Library
+UnityAoC/Logs
+UnityAoC/Temp
+UnityAoC/*.csproj

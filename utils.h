@@ -68,6 +68,11 @@ StringVector GetFileAsLines(Path path)
             lines.push_back(line);
         }
     }
+    else
+    {
+        std::cout << "Failed to open file: " << path << std::endl;
+        std::cout << "Current working directory: " << std::filesystem::current_path() << std::endl;
+    }
 
     return lines;
 }
