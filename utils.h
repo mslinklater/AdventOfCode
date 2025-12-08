@@ -7,11 +7,19 @@
 #include <iostream>
 #include <sstream>
 
+//-------------------------------------
+// Basic types
+//-------------------------------------
+
 typedef std::string String;
 typedef std::filesystem::path Path;
 typedef std::vector<String> StringVector;
 typedef std::vector<int> IntVector;
 typedef std::vector<uint64_t> ULongVector;
+
+//-------------------------------------
+// Enums
+//-------------------------------------
 
 enum class EDirection
 {
@@ -22,7 +30,9 @@ enum class EDirection
     Num
 };
 
+//-------------------------------------
 // Vec2
+//-------------------------------------
 
 struct Vec2
 {
@@ -52,7 +62,74 @@ struct Vec2
 
 typedef std::vector<Vec2> Vec2Vector;
 
+//-------------------------------------
+// general purpose 2D grid
+//-------------------------------------
+
+template<class T>
+class Grid2D
+{
+public:
+    Grid2D(){}
+    virtual ~Grid2D(){}
+
+    void Initialize(int _width, int _height)
+    {
+        width = _width;
+        height = _height;
+        e.clear();
+        for(int y=0 ; y<height ; ++y)
+        {
+            std::vector<T> row;
+            row.resize(width);
+            e.push_back(row);
+        }
+    }
+
+    Grid2D(int _width, int _height)
+    : width(_width)
+    , height(_height)
+    {
+        Initialize(width, height);
+    }
+
+    bool Inside(int x, int y) const
+    {
+        return x >= 0 && x < width && y >= 0 && y < height;
+    }
+
+    void Set(int x, int y, const T& val)
+    {
+        e[y][x] = val;
+    }
+    const T& Get(int x, int y) const
+    {
+        return e[y][x];
+    }
+    T& GetMutable(int x, int y)
+    {
+        return e[y][x];
+    }
+
+    int Height() const
+    {
+        return e.size();
+    }
+
+    int Width() const
+    {
+        return e[0].size();
+    }
+
+private:
+    int width = 0;
+    int height = 0;
+    std::vector<std::vector<T>> e;
+};
+
+//-------------------------------------
 // File loading
+//-------------------------------------
 
 StringVector GetFileAsLines(Path path)
 {
@@ -189,53 +266,3 @@ std::vector<int> IntToBaseDigits(int num, int base, int minDigits)
     }
     return ret;
 }
-
-template<class T>
-class Grid2D
-{
-public:
-    Grid2D(int _width, int _height)
-    : width(_width)
-    , height(_height)
-    {
-        for(int y=0 ; y<height ; ++y)
-        {
-            std::vector<T> row;
-            row.resize(width);
-            e.push_back(row);
-        }
-    }
-
-    bool Inside(int x, int y) const
-    {
-        return x >= 0 && x < width && y >= 0 && y < height;
-    }
-
-    void Set(int x, int y, const T& val)
-    {
-        e[y][x] = val;
-    }
-    const T& Get(int x, int y) const
-    {
-        return e[y][x];
-    }
-    T& GetMutable(int x, int y)
-    {
-        return e[y][x];
-    }
-
-    int Height() const
-    {
-        return e.size();
-    }
-
-    int Width() const
-    {
-        return e[0].size();
-    }
-
-private:
-    int width;
-    int height;
-    std::vector<std::vector<T>> e;
-};
