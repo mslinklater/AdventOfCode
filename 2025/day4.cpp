@@ -4,7 +4,7 @@
 
 #include "utils.h"
 
-Grid2D<char> Data;
+Grid2D<char> data;
 
 void LoadData(const std::string& filename)
 {
@@ -12,12 +12,12 @@ void LoadData(const std::string& filename)
     StringVector lines = GetFileAsLines(filename);
     assert(!lines.empty());
 
-    Data.Initialize(lines[0].size(), lines.size());
+    data.Initialize(lines[0].size(), lines.size());
     for(int y=0 ; y<lines.size() ; ++y)
     {
         for(int x=0 ; x<lines[0].size() ; ++x)
         {
-            Data.Set(x, y, lines[y][x]);
+            data.Set(x, y, lines[y][x]);
         }
     }
 }
