@@ -4,3 +4,4 @@ UnityAoC/Library
 UnityAoC/Logs
 UnityAoC/Temp
 UnityAoC/*.csproj
+.DS_Store
